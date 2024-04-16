@@ -14,3 +14,9 @@ config/name="Adding Titles Later"
 run/main_scene="res://Main-Character.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/mode=3
+window/size/borderless=true
+window/stretch/mode="viewport"
