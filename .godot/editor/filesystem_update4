@@ -1,2 +1,5 @@
-res://scenes/Entry_Stage.tscn
 res://Main-Character.tscn
+res://scenes/Entry_Stage.tscn
+res://menu.tscn
+res://menu.gd
+res://level_2.tscn
