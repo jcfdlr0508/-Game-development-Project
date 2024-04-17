@@ -1,2 +1,3 @@
+res://scenes/Main_Character.tscn
 res://scenes/Entry_Stage.tscn
-res://Main-Character.tscn
+res://scenes/Main_Character.gd

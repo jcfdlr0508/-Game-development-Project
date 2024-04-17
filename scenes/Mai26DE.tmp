@@ -54,7 +54,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_ypmyt")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack1",
 "speed": 8.0
 }, {
@@ -97,13 +97,16 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_d3223")
 }],
-"loop": false,
+"loop": true,
 "name": &"jumping",
 "speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("10_okour")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dqrpr")
 }, {
 "duration": 1.0,
 "texture": ExtResource("12_mj8ve")
@@ -128,9 +131,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("19_1oma4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_dqrpr")
 }],
 "loop": true,
 "name": &"running",
@@ -141,7 +141,7 @@ animations = [{
 size = Vector2(76, 89)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0edx"]
-size = Vector2(42, 111)
+size = Vector2(56, 111)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_nrovx")
@@ -151,19 +151,20 @@ texture_filter = 1
 position = Vector2(135.5, 278)
 scale = Vector2(1.41, 2.10909)
 sprite_frames = SubResource("SpriteFrames_tuf0o")
-animation = &"running"
+animation = &"attack1"
 autoplay = "idle"
+frame = 4
+frame_progress = 0.431782
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(123, 288.5)
 shape = SubResource("RectangleShape2D_dh1ag")
 debug_color = Color(0.811765, 0, 0.25098, 0.419608)
 
-[node name="AttackArea" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(182, 280)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(189, 280)
 shape = SubResource("RectangleShape2D_c0edx")
-disabled = true
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]

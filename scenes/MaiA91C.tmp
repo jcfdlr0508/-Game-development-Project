@@ -54,7 +54,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_ypmyt")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack1",
 "speed": 8.0
 }, {
@@ -97,7 +97,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_d3223")
 }],
-"loop": false,
+"loop": true,
 "name": &"jumping",
 "speed": 11.0
 }, {
@@ -151,7 +151,7 @@ texture_filter = 1
 position = Vector2(135.5, 278)
 scale = Vector2(1.41, 2.10909)
 sprite_frames = SubResource("SpriteFrames_tuf0o")
-animation = &"running"
+animation = &"attack1"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
