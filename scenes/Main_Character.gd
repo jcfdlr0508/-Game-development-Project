@@ -11,15 +11,18 @@ var has_double_jump = false
 var isAttacking = false
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("Attacking") and not isAttacking:
+	if Input.is_action_just_pressed("Attacking"):
 		sprite_2d.play("attack1")
 		isAttacking = true
+		$AttackArea/CollisionShape2D.disabled = false
 
 	if not isAttacking:
 		if (velocity.x > 1 or velocity.x < -1):
-			sprite_2d.animation = "running"
+			sprite_2d.play("running")
+			isAttacking = false
+			
 		else:
-			sprite_2d.animation = "idle"
+			sprite_2d.play("idle")
 
 		if not is_on_floor():
 			velocity.y += gravity * delta
@@ -38,6 +41,8 @@ func _physics_process(delta):
 		if direction:
 			velocity.x = direction * SPEED
 			sprite_2d.flip_h = direction < 0
+			sprite_2d.animation = "running"
+			isAttacking = false
 		else:
 			if is_on_floor():
 				sprite_2d.animation = "idle"
@@ -45,6 +50,11 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+
 func _on_sprite_2d_animation_finished():
 	if sprite_2d.animation == "attack1":
+		sprite_2d.stop()
 		isAttacking = false
+		sprite_2d.animation = "idle"
+		$AttackArea/CollisionShape2D.disabled =true
+

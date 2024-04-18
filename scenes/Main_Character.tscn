@@ -56,7 +56,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack1",
-"speed": 8.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -97,7 +97,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_d3223")
 }],
-"loop": false,
+"loop": true,
 "name": &"jumping",
 "speed": 11.0
 }, {
