@@ -111,7 +111,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh1ag"]
 size = Vector2(76, 89)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D"]
 script = ExtResource("1_nrovx")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

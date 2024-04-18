@@ -1,2 +1,10 @@
-res://scenes/Entry_Stage.tscn
 res://Main-Character.tscn
+res://scenes/Entry_Stage.tscn
+res://scenes/state.gd
+res://scenes/FiniteStateMachine.gd
+res://boss_room.tscn
+res://scenes/Idle.gd
+res://scenes/Main_Character.tscn
+res://scenes/Main_Character.gd
+res://scenes/Follow.gd
+res://scenes/Golem Boss.gd
