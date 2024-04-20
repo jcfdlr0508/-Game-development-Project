@@ -15,6 +15,7 @@ func _physics_process(delta):
 		sprite_2d.play("attack1")
 		isAttacking = true
 		$AttackArea/CollisionShape2D.disabled = false
+		$AttackArea/CollisionShape2D2.disabled = false
 
 	if not isAttacking:
 		if (velocity.x > 1 or velocity.x < -1):
@@ -57,4 +58,5 @@ func _on_sprite_2d_animation_finished():
 		isAttacking = false
 		sprite_2d.animation = "idle"
 		$AttackArea/CollisionShape2D.disabled =true
+		$AttackArea/CollisionShape2D2.disabled =true
 

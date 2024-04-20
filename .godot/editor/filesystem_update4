@@ -1,1 +1,6 @@
 res://scenes/Entry_Stage.tscn
+res://scenes/Castle Collision.gd
+res://menu.gd
+res://scenes/Main_Character.tscn
+res://enemy_knight.tscn
+res://scenes/level_2.tscn

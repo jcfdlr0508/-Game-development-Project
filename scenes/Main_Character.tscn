@@ -143,7 +143,7 @@ size = Vector2(76, 89)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0edx"]
 size = Vector2(42, 111)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_nrovx")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -163,6 +163,11 @@ debug_color = Color(0.811765, 0, 0.25098, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(182, 280)
+shape = SubResource("RectangleShape2D_c0edx")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(64, 280)
 shape = SubResource("RectangleShape2D_c0edx")
 disabled = true
 
