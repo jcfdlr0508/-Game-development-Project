@@ -1,12 +1,12 @@
 CollisionShape2D
 Area2D
+AnimatedSprite2D
 RayCast2D
 StaticBody2D
 Node
 AnimationPlayer
 Sprite2D
 CharacterBody2D
-AnimatedSprite2D
 TileMap
 ParallaxLayer
 ParallaxBackground
