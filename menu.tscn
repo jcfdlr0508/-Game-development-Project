@@ -68,8 +68,9 @@ theme_override_constants/outline_size = 30
 theme_override_constants/shadow_outline_size = 14
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = SubResource("SystemFont_wdg73")
-theme_override_font_sizes/font_size = 100
-text = "GAME TITLE
+theme_override_font_sizes/font_size = 70
+text = "Herofire:
+Rise of the Chivalrous Knights
 
 "
 horizontal_alignment = 1
