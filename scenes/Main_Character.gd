@@ -11,8 +11,9 @@ var has_double_jump = false
 var isAttacking = false
 
 func _physics_process(delta):
-	if sprite_2d.animation == "attack1":
+	if sprite_2d.animation == "attack1" and is_on_floor():
 		return
+
 	if Input.is_action_just_pressed("Attacking"):
 		sprite_2d.play("attack1")
 		isAttacking = true

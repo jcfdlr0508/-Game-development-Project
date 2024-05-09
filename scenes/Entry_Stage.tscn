@@ -48,8 +48,8 @@
 [ext_resource type="Texture2D" uid="uid://c36ctk23xilnr" path="res://Decorations/table_shadow.png" id="34_xqn8q"]
 [ext_resource type="Texture2D" uid="uid://bhq2yj11wmpv4" path="res://Decorations/barrel.png" id="47_ju7ud"]
 [ext_resource type="Texture2D" uid="uid://b13t54t15v73t" path="res://Decorations/barrel_damaged.png" id="48_uc7h7"]
-[ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://enemy_knight.tscn" id="49_45e5f"]
 [ext_resource type="Script" path="res://scenes/Castle Collision.gd" id="50_jw2w3"]
+[ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="50_sho03"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7i0e8"]
 texture = ExtResource("1_10wel")
@@ -18294,14 +18294,14 @@ floor_stop_on_slope = false
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(136, 284)
 
-[node name="Enemy-Knight" parent="." instance=ExtResource("49_45e5f")]
-position = Vector2(-90, -49)
-
 [node name="Castle Collision" type="Area2D" parent="."]
 script = ExtResource("50_jw2w3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Castle Collision"]
 position = Vector2(13913, 390.5)
 shape = SubResource("RectangleShape2D_e1k73")
+
+[node name="Enemy-Archer" parent="." instance=ExtResource("50_sho03")]
+position = Vector2(184, 315)
 
 [connection signal="body_entered" from="Castle Collision" to="Castle Collision" method="_on_body_entered"]
