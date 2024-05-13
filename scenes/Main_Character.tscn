@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://5k723g23snmi"]
+[gd_scene load_steps=41 format=3 uid="uid://5k723g23snmi"]
 
 [ext_resource type="Script" path="res://scenes/Main_Character.gd" id="1_nrovx"]
 [ext_resource type="Texture2D" uid="uid://ck8ghfjvrlxfk" path="res://Player/Idle/HeroKnight_Idle_0.png" id="2_dkk0h"]
@@ -13,16 +13,24 @@
 [ext_resource type="Texture2D" uid="uid://crlrtwoltarrq" path="res://Player/Attack1/HeroKnight_Attack1_4.png" id="6_gqd03"]
 [ext_resource type="Texture2D" uid="uid://dvysl1psorx5o" path="res://Player/Idle/HeroKnight_Idle_4.png" id="7_dabl0"]
 [ext_resource type="Texture2D" uid="uid://byknjgdomq2ai" path="res://Player/Attack1/HeroKnight_Attack1_5.png" id="7_ypmyt"]
+[ext_resource type="Texture2D" uid="uid://cm55elkric8fw" path="res://Player/Block/HeroKnight_Block Idle_0.png" id="8_4ryvi"]
 [ext_resource type="Texture2D" uid="uid://cg5rh5kjqgm1u" path="res://Player/Idle/HeroKnight_Idle_6.png" id="8_x5x42"]
+[ext_resource type="Texture2D" uid="uid://diaw4uj8b481f" path="res://Player/Block/HeroKnight_Block Idle_1.png" id="9_sxhfh"]
 [ext_resource type="Texture2D" uid="uid://dg7pxsuthqbdt" path="res://Player/Idle/HeroKnight_Idle_7.png" id="9_ueydr"]
+[ext_resource type="Texture2D" uid="uid://th1prhdqceg5" path="res://Player/Block/HeroKnight_Block Idle_2.png" id="10_jibk8"]
 [ext_resource type="Texture2D" uid="uid://dtg5wyk0aswtj" path="res://Player/Jump/HeroKnight_Jump_0.png" id="10_nmxrj"]
 [ext_resource type="Texture2D" uid="uid://cujolt6oueiwt" path="res://Player/Run/HeroKnight_Run_0.png" id="10_okour"]
 [ext_resource type="Texture2D" uid="uid://b0fnepsr8h8kc" path="res://Player/Run/HeroKnight_Run_1.png" id="11_dqrpr"]
+[ext_resource type="Texture2D" uid="uid://bov2l7gdq8twd" path="res://Player/Block/HeroKnight_Block Idle_3.png" id="11_grqu7"]
 [ext_resource type="Texture2D" uid="uid://bdudwsprimgkw" path="res://Player/Jump/HeroKnight_Jump_1.png" id="11_w8oec"]
 [ext_resource type="Texture2D" uid="uid://cy5nmhm03h5v0" path="res://Player/Jump/HeroKnight_Jump_2.png" id="12_d3223"]
 [ext_resource type="Texture2D" uid="uid://c7ab5p2w0kdjd" path="res://Player/Run/HeroKnight_Run_2.png" id="12_mj8ve"]
+[ext_resource type="Texture2D" uid="uid://dtwljqqnmhc5m" path="res://Player/Block/HeroKnight_Block Idle_4.png" id="12_ws4mk"]
 [ext_resource type="Texture2D" uid="uid://cgjwnk0dqfxs7" path="res://Player/Run/HeroKnight_Run_3.png" id="13_frklp"]
+[ext_resource type="Texture2D" uid="uid://raov7bvilji7" path="res://Player/Block/HeroKnight_Block Idle_5.png" id="13_lkqxd"]
 [ext_resource type="Texture2D" uid="uid://djjkefa4k3hqw" path="res://Player/Run/HeroKnight_Run_4.png" id="14_uhofu"]
+[ext_resource type="Texture2D" uid="uid://km0jvdyaq12o" path="res://Player/Block/HeroKnight_Block Idle_6.png" id="14_wwnug"]
+[ext_resource type="Texture2D" uid="uid://bxvd5ni2t45l4" path="res://Player/Block/HeroKnight_Block Idle_7.png" id="15_ekl4x"]
 [ext_resource type="Texture2D" uid="uid://c5yj4gbabr4ro" path="res://Player/Run/HeroKnight_Run_5.png" id="15_hmdb4"]
 [ext_resource type="Texture2D" uid="uid://bld1vrsfm4adc" path="res://Player/Run/HeroKnight_Run_6.png" id="16_yp0rh"]
 [ext_resource type="Texture2D" uid="uid://2sltpho3s057" path="res://Player/Run/HeroKnight_Run_7.png" id="17_ql70e"]
@@ -60,6 +68,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("8_4ryvi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sxhfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jibk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_grqu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ws4mk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_lkqxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_wwnug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ekl4x")
+}],
+"loop": true,
+"name": &"blocking",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xsjv0")
 }, {
 "duration": 1.0,
@@ -85,7 +122,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -151,7 +188,7 @@ texture_filter = 1
 position = Vector2(135.5, 278)
 scale = Vector2(1.41, 2.10909)
 sprite_frames = SubResource("SpriteFrames_tuf0o")
-animation = &"running"
+animation = &"blocking"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
