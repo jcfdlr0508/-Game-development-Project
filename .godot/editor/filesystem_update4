@@ -1,5 +1,7 @@
 res://scenes/enemy_knight.tscn
 res://scenes/enemy_archer.tscn
-res://scenes/Entry_Stage.tscn
 res://scenes/Main_Character.tscn
-res://scenes/enemy_archer.gd
+res://scenes/golem_boss.tscn
+res://scenes/Idle.gd
+res://scenes/state.gd
+res://scenes/FiniteStateMachine.gd

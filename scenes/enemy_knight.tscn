@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bg2btnpxnuw6u"]
+[gd_scene load_steps=34 format=3 uid="uid://de0s8hvpvlpbx"]
 
 [ext_resource type="Texture2D" uid="uid://l1jenmk7n5m2" path="res://Enemies/Knights/_Attack.png" id="1_5xtpr"]
 [ext_resource type="Texture2D" uid="uid://c32wkx20mhqgg" path="res://Enemies/Knights/_Idle.png" id="1_fkhcr"]
