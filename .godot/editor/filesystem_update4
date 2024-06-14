@@ -1,5 +1,5 @@
-res://scenes/enemy_knight.tscn
-res://scenes/enemy_archer.tscn
-res://scenes/Entry_Stage.tscn
-res://scenes/Main_Character.tscn
-res://scenes/enemy_archer.gd
+res://scenes/level_4.tscn
+res://scenes/level_3.tscn
+res://scenes/level_2.tscn
+res://scenes/title.tscn
+res://scenes/options.tscn

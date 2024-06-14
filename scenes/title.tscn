@@ -1,0 +1,186 @@
+[gd_scene load_steps=7 format=3 uid="uid://hfovns1wofrc"]
+
+[ext_resource type="Texture2D" uid="uid://cn8vrjyox2ici" path="res://MainMenuBG/Menuehintergrund.jpg" id="1_ga8xj"]
+[ext_resource type="Script" path="res://scenes/title.gd" id="1_hq4co"]
+[ext_resource type="Texture2D" uid="uid://c137725pd2m7n" path="res://MainMenuBG/menu hud/title.png" id="2_asvjn"]
+[ext_resource type="Texture2D" uid="uid://c0hdwlj0ggyy4" path="res://MainMenuBG/menu hud/button.png" id="3_dgg1s"]
+
+[sub_resource type="SystemFont" id="SystemFont_8e3dp"]
+font_names = PackedStringArray("Bookman Old Style")
+font_weight = 500
+
+[sub_resource type="SystemFont" id="SystemFont_x4444"]
+font_names = PackedStringArray("Bookman Old Style")
+font_weight = 600
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hq4co")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ga8xj")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -353.0
+offset_right = 353.0
+offset_bottom = 325.0
+grow_horizontal = 2
+texture = ExtResource("2_asvjn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -296.0
+offset_top = 53.0
+offset_right = 296.0
+offset_bottom = 349.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.87451, 0.803922, 0.207843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = SubResource("SystemFont_8e3dp")
+theme_override_font_sizes/normal_font_size = 58
+bbcode_enabled = true
+text = "[center]HeroFire: 
+Rise of the Chivalrous Knights[/center]"
+fit_content = true
+tab_size = 5
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.5
+offset_top = -258.0
+offset_right = 143.5
+offset_bottom = -184.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_dgg1s")
+
+[node name="StartButton" type="MenuButton" parent="NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 14.5
+offset_right = -32.0
+offset_bottom = -11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.87451, 0.803922, 0.207843, 1)
+theme_override_colors/font_pressed_color = Color(0.403922, 0.368627, 0.0705882, 1)
+theme_override_colors/font_hover_color = Color(0.976471, 0.94902, 0.686275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("SystemFont_x4444")
+theme_override_font_sizes/font_size = 29
+toggle_mode = false
+text = "Start Game"
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.5
+offset_top = -195.0
+offset_right = 143.5
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_dgg1s")
+
+[node name="AboutButton" type="MenuButton" parent="NinePatchRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 14.5
+offset_right = -32.0
+offset_bottom = -11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.87451, 0.803922, 0.207843, 1)
+theme_override_colors/font_pressed_color = Color(0.403922, 0.368627, 0.0705882, 1)
+theme_override_colors/font_hover_color = Color(0.976471, 0.94902, 0.686275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("SystemFont_x4444")
+theme_override_font_sizes/font_size = 29
+toggle_mode = false
+text = "About"
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.5
+offset_top = -133.0
+offset_right = 143.5
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_dgg1s")
+
+[node name="QuitButton" type="MenuButton" parent="NinePatchRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 14.5
+offset_right = -32.0
+offset_bottom = -11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.87451, 0.803922, 0.207843, 1)
+theme_override_colors/font_pressed_color = Color(0.403922, 0.368627, 0.0705882, 1)
+theme_override_colors/font_hover_color = Color(0.976471, 0.94902, 0.686275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("SystemFont_x4444")
+theme_override_font_sizes/font_size = 29
+toggle_mode = false
+text = "Quit"
+
+[connection signal="pressed" from="NinePatchRect2/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="NinePatchRect3/AboutButton" to="." method="_on_about_button_pressed"]
+[connection signal="pressed" from="NinePatchRect4/QuitButton" to="." method="_on_quit_button_pressed"]
