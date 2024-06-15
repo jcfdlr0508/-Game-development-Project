@@ -206,6 +206,7 @@ animation = &"blocking"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(123, 288.5)
 shape = SubResource("RectangleShape2D_dh1ag")
 debug_color = Color(0.811765, 0, 0.25098, 0.419608)
@@ -213,6 +214,7 @@ debug_color = Color(0.811765, 0, 0.25098, 0.419608)
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+visible = false
 position = Vector2(182, 280)
 shape = SubResource("RectangleShape2D_c0edx")
 disabled = true
