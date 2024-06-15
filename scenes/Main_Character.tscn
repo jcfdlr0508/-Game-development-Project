@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://5k723g23snmi"]
+[gd_scene load_steps=43 format=3 uid="uid://5k723g23snmi"]
 
 [ext_resource type="Script" path="res://scenes/Main_Character.gd" id="1_nrovx"]
 [ext_resource type="Texture2D" uid="uid://ck8ghfjvrlxfk" path="res://Player/Idle/HeroKnight_Idle_0.png" id="2_dkk0h"]
@@ -180,7 +180,21 @@ size = Vector2(76, 89)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0edx"]
 size = Vector2(42, 111)
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xj4tl"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sivit"]
+bg_color = Color(0.905882, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_nrovx")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -203,4 +217,18 @@ position = Vector2(182, 280)
 shape = SubResource("RectangleShape2D_c0edx")
 disabled = true
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -436.0
+offset_top = -29.0
+offset_right = 37.0
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(0.835294, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.866667, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_xj4tl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sivit")
+value = 50.0
+show_percentage = false
+
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

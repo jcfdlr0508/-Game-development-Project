@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bg2btnpxnuw6u"]
+[gd_scene load_steps=34 format=3 uid="uid://bg2btnpxnuw6u"]
 
 [ext_resource type="Texture2D" uid="uid://l1jenmk7n5m2" path="res://Enemies/Knights/_Attack.png" id="1_5xtpr"]
 [ext_resource type="Texture2D" uid="uid://c32wkx20mhqgg" path="res://Enemies/Knights/_Idle.png" id="1_fkhcr"]
@@ -7,27 +7,12 @@
 [sub_resource type="GDScript" id="GDScript_4mmnb"]
 script/source = "extends CharacterBody2D
 @onready var knight_sprite_2d = $Sprite2D
-@onready var knight_health_bar = $HealthBar
 
 var speed = 150.0
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 var facing_right = false
-var main_character = preload(\"res://scenes/Main_Character.gd\")
-var hp = 100
+var player = load(\"res://scenes/Main_Character.gd\")
 
-func _ready():
-	# Initialize the health bar
-	knight_health_bar.max_value = 100
-	knight_health_bar.value = hp
-	
-func reduce_health(amount):
-	knight_health_bar.value -= amount
-	if knight_health_bar.value <= 0:
-		die()
-
-func die():
-	queue_free()
-	# Add any additional logic for when the player dies
 
 
 func _physics_process(delta):
@@ -50,7 +35,6 @@ func _on_player_detector_body_entered(body):
 		else:
 			knight_sprite_2d.play(\"running\")
 			velocity.x = -speed
-	knight_health_bar.visible = true
 
 func flip():
 	facing_right = !facing_right
@@ -86,7 +70,6 @@ func _on_attack_detector_body_entered(body):
 func _on_player_detector_body_exited(body):
 	knight_sprite_2d.play(\"idle\")
 	velocity.x = 0
-	knight_health_bar.visible = false
 
 
 
@@ -97,9 +80,8 @@ func _on_player_attack_detector_body_exited(body):
 
 func _on_player_attack_detector_body_entered(body):
 	knight_sprite_2d.play(\"attacking\")
-	if body.get_name() == \"Player\":
-		body.reduce_health(10)
-	
+	if sprite_2d:
+		player_health_bar = -10
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ligru"]
@@ -110,6 +92,9 @@ size = Vector2(82, 81.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gm3g"]
 size = Vector2(41, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_372ht"]
+size = Vector2(61.5, 82)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6hl6"]
 atlas = ExtResource("1_5xtpr")
@@ -297,20 +282,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en8bn"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17d77"]
-bg_color = Color(0.803922, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [node name="Enemy-Knight" type="CharacterBody2D"]
 script = SubResource("GDScript_4mmnb")
 
@@ -334,6 +305,16 @@ debug_color = Color(0, 0.537255, 0.960784, 0.419608)
 position = Vector2(704, 579)
 shape = SubResource("RectangleShape2D_8gm3g")
 
+[node name="AttackDetector" type="Area2D" parent="."]
+collision_layer = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDetector"]
+position = Vector2(632, 578)
+shape = SubResource("RectangleShape2D_372ht")
+debug_color = Color(0.992157, 0, 0.266667, 0.419608)
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(700, 535)
@@ -349,18 +330,8 @@ position = Vector2(683, 620)
 scale = Vector2(1, 0.44)
 collide_with_areas = true
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-texture_filter = 1
-offset_left = 685.0
-offset_top = 623.0
-offset_right = 726.0
-offset_bottom = 634.0
-theme_override_styles/background = SubResource("StyleBoxFlat_en8bn")
-theme_override_styles/fill = SubResource("StyleBoxFlat_17d77")
-value = 50.0
-show_percentage = false
-
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
 [connection signal="body_entered" from="PlayerAttackDetector" to="." method="_on_player_attack_detector_body_entered"]
 [connection signal="body_exited" from="PlayerAttackDetector" to="." method="_on_player_attack_detector_body_exited"]
+[connection signal="body_entered" from="AttackDetector" to="." method="_on_attack_detector_body_entered"]

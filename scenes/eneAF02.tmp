@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://behjde7totgkc"]
+[gd_scene load_steps=35 format=3 uid="uid://behjde7totgkc"]
 
 [ext_resource type="Script" path="res://scenes/enemy_archer.gd" id="1_4lmdd"]
 [ext_resource type="Texture2D" uid="uid://jt51xmogv8pw" path="res://Enemies/Archers/spr_ArcherIdle_strip_NoBkg.png" id="1_jmy8x"]
@@ -214,20 +214,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6gau"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_815p1"]
-bg_color = Color(0.803922, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [node name="Enemy-Archer" type="CharacterBody2D"]
 script = ExtResource("1_4lmdd")
 
@@ -257,27 +243,19 @@ texture_filter = 1
 position = Vector2(-52, -59)
 scale = Vector2(1.24351, 2.50156)
 sprite_frames = SubResource("SpriteFrames_afeh1")
-animation = &"attacking"
+animation = &"running"
 autoplay = "idle"
-frame_progress = 0.517794
 offset = Vector2(234.667, 92.3026)
 flip_h = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(223, 235)
 
-[node name="ArrowProjectile" type="Marker2D" parent="."]
-position = Vector2(214, 203)
-
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = 214.0
-offset_top = 263.0
-offset_right = 261.0
-offset_bottom = 290.0
-theme_override_styles/background = SubResource("StyleBoxFlat_i6gau")
-theme_override_styles/fill = SubResource("StyleBoxFlat_815p1")
-value = 50.0
-show_percentage = false
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="ArrowProjectile" type="Marker2D" parent="."]
 
 [connection signal="body_entered" from="Player Detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="Player Detector" to="." method="_on_player_detector_body_exited"]

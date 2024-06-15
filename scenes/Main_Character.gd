@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var sprite_2d = $Sprite2D
+@onready var player_health_bar = $HealthBar
+
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -10,6 +12,22 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var has_double_jump = false
 var isAttacking = false
 var isBlocking = false
+var player = load("res://scenes/enemy_knight.tscn")
+var hp = 100
+
+func _ready():
+	# Initialize the health bar
+	player_health_bar.max_value = 100
+	player_health_bar.value = hp
+	
+func reduce_health(amount):
+	player_health_bar.value -= amount
+	if player_health_bar.value <= 0:
+		die()
+
+func die():
+	queue_free()
+	# Add any additional logic for when the player dies
 
 func _physics_process(delta):
 	if sprite_2d.animation == "attack1" and is_on_floor():
@@ -26,11 +44,11 @@ func _physics_process(delta):
 		isAttacking = true
 		isBlocking = false
 		$AttackArea/CollisionShape2D.disabled = false
+		
 
 	if Input.is_action_just_pressed("Blocking"):
 		sprite_2d.play("blocking")
 		isBlocking = true
-		isAttacking = false
 
 	if not isAttacking and not isBlocking:
 		if (velocity.x > 1 or velocity.x < -1):
@@ -78,3 +96,15 @@ func _on_sprite_2d_animation_finished():
 		isAttacking = false
 		sprite_2d.animation = "idle"
 		$AttackArea/CollisionShape2D.disabled = true
+
+#Enemy's Hurtbox
+func _on_attack_area_body_entered(body):
+		if body.get_name() == "Enemy-Knight":
+			body.reduce_health(35)
+			if isBlocking:
+				body.reduce_health(0)
+		elif body.get_name() == "Enemy-Archer":
+			body.reduce_health(50)
+			if isBlocking:
+				body.reduce_health(0)
+		

@@ -8,11 +8,12 @@
 script/source = "extends CharacterBody2D
 @onready var knight_sprite_2d = $Sprite2D
 @onready var knight_health_bar = $HealthBar
+@onready var sprite_2d = $Sprite2D
 
 var speed = 150.0
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 var facing_right = false
-var main_character = preload(\"res://scenes/Main_Character.gd\")
+var player = load(\"res://scenes/Main_Character.gd\")
 var hp = 100
 
 func _ready():
@@ -99,7 +100,8 @@ func _on_player_attack_detector_body_entered(body):
 	knight_sprite_2d.play(\"attacking\")
 	if body.get_name() == \"Player\":
 		body.reduce_health(10)
-	
+		if sprite_2d.animation == \"blocking\":
+			body.reduce_health(10)
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ligru"]
@@ -305,7 +307,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17d77"]
-bg_color = Color(0.803922, 0, 0, 1)
+bg_color = Color(0.905882, 0, 0, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -350,6 +352,7 @@ scale = Vector2(1, 0.44)
 collide_with_areas = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
 texture_filter = 1
 offset_left = 685.0
 offset_top = 623.0

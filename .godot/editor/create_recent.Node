@@ -1,6 +1,9 @@
-RayCast2D
-CollisionShape2D
+ProgressBar
+Marker2D
 Area2D
+CollisionShape2D
+Timer
+RayCast2D
 AnimatedSprite2D
 CharacterBody2D
 StaticBody2D
@@ -9,6 +12,3 @@ AnimationPlayer
 Sprite2D
 TileMap
 ParallaxLayer
-ParallaxBackground
-CollisionPolygon2D
-Camera2D

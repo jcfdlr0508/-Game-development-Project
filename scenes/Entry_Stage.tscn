@@ -49,7 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://bhq2yj11wmpv4" path="res://Decorations/barrel.png" id="47_ju7ud"]
 [ext_resource type="Texture2D" uid="uid://b13t54t15v73t" path="res://Decorations/barrel_damaged.png" id="48_uc7h7"]
 [ext_resource type="Script" path="res://scenes/Castle Collision.gd" id="50_jw2w3"]
-[ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="50_sho03"]
+[ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="50_jy8oi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7i0e8"]
 texture = ExtResource("1_10wel")
@@ -18293,6 +18293,7 @@ floor_stop_on_slope = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(136, 284)
+limit_top = -30000000
 
 [node name="Castle Collision" type="Area2D" parent="."]
 script = ExtResource("50_jw2w3")
@@ -18301,7 +18302,7 @@ script = ExtResource("50_jw2w3")
 position = Vector2(13913, 390.5)
 shape = SubResource("RectangleShape2D_e1k73")
 
-[node name="Enemy-Archer" parent="." instance=ExtResource("50_sho03")]
-position = Vector2(184, 315)
+[node name="Enemy-Archer" parent="." instance=ExtResource("50_jy8oi")]
+position = Vector2(219, 282)
 
 [connection signal="body_entered" from="Castle Collision" to="Castle Collision" method="_on_body_entered"]
