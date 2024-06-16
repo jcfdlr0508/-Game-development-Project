@@ -1,32 +1,14 @@
-<<<<<<< HEAD
+VBoxContainer
+MarginContainer
+Button
+Label
+TextureRect
+Container
+MenuButton
+NinePatchRect
+Timer
+RayCast2D
+VisibleOnScreenEnabler2D
 ProgressBar
 Marker2D
 Area2D
-CollisionShape2D
-Timer
-RayCast2D
-AnimatedSprite2D
-CharacterBody2D
-StaticBody2D
-Node
-AnimationPlayer
-Sprite2D
-=======
->>>>>>> c540e993336c475c2596c0289de1fc60cb1c2623
-TileMap
-CollisionShape2D
-StaticBody2D
-Sprite2D
-AnimatedSprite2D
-ParallaxLayer
-<<<<<<< HEAD
-=======
-ParallaxBackground
-AnimationPlayer
-RemoteTransform2D
-AnimatableBody2D
-PathFollow2D
-Path2D
-ColorRect
-Node
->>>>>>> c540e993336c475c2596c0289de1fc60cb1c2623

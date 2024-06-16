@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 @onready var sprite_2d = $Sprite2D
 @onready var player_health_bar = $HealthBar
-
+@onready var pause_menu = $"Pause Menu"
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const double_jump_velocity = -450.0
+const DOUBLE_JUMP_VELOCITY = -450.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var has_double_jump = false
@@ -14,20 +14,32 @@ var isAttacking = false
 var isBlocking = false
 var player = load("res://scenes/enemy_knight.tscn")
 var hp = 100
+var paused = false
 
 func _ready():
 	# Initialize the health bar
 	player_health_bar.max_value = 100
 	player_health_bar.value = hp
-	
+
 func reduce_health(amount):
-	player_health_bar.value -= amount
-	if player_health_bar.value <= 0:
-		die()
+	if not isBlocking:
+		player_health_bar.value -= amount
+		if player_health_bar.value <= 0:
+			die()
 
 func die():
 	queue_free()
 	# Add any additional logic for when the player dies
+
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+
+	paused = !paused
 
 func _physics_process(delta):
 	if sprite_2d.animation == "attack1" and is_on_floor():
@@ -39,12 +51,14 @@ func _physics_process(delta):
 	elif sprite_2d.animation == "blocking" and not is_on_floor():
 		velocity.y += gravity * delta
 
+	if Input.is_action_just_pressed("Pause"):
+		pauseMenu()
+
 	if Input.is_action_just_pressed("Attacking"):
 		sprite_2d.play("attack1")
 		isAttacking = true
 		isBlocking = false
 		$AttackArea/CollisionShape2D.disabled = false
-		
 
 	if Input.is_action_just_pressed("Blocking"):
 		sprite_2d.play("blocking")
@@ -66,7 +80,7 @@ func _physics_process(delta):
 			if is_on_floor():
 				velocity.y = JUMP_VELOCITY
 			elif not has_double_jump:
-				velocity.y = double_jump_velocity
+				velocity.y = DOUBLE_JUMP_VELOCITY
 				has_double_jump = true
 
 		var direction = Input.get_axis("Left", "Right")
@@ -97,14 +111,11 @@ func _on_sprite_2d_animation_finished():
 		sprite_2d.animation = "idle"
 		$AttackArea/CollisionShape2D.disabled = true
 
-#Enemy's Hurtbox
+# Enemy's Hurtbox
 func _on_attack_area_body_entered(body):
-		if body.get_name() == "Enemy-Knight":
+	if body.get_name() == "Enemy-Knight":
+		if not isBlocking:
 			body.reduce_health(35)
-			if isBlocking:
-				body.reduce_health(0)
-		elif body.get_name() == "Enemy-Archer":
+	elif body.get_name() == "Enemy-Archer":
+		if not isBlocking:
 			body.reduce_health(50)
-			if isBlocking:
-				body.reduce_health(0)
-		

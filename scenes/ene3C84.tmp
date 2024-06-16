@@ -8,8 +8,6 @@
 script/source = "extends CharacterBody2D
 @onready var knight_sprite_2d = $Sprite2D
 @onready var knight_health_bar = $HealthBar
-@onready var timer = $Timer
-
 
 var speed = 150.0
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
@@ -18,8 +16,6 @@ var main_character = preload(\"res://scenes/Main_Character.gd\")
 var hp = 100
 
 func _ready():
-	#Timer
-	timer.start()
 	# Initialize the health bar
 	knight_health_bar.max_value = 100
 	knight_health_bar.value = hp
@@ -64,11 +60,13 @@ func flip():
 		velocity.x = speed
 		$RayCast2D.position.x = 725
 		$PlayerAttackDetector/CollisionShape2D.position.x = 766
+		$AttackDetector/CollisionShape2D.position.x = 771
 	else:
 		$Sprite2D.flip_h = true
 		velocity.x = -speed
 		$RayCast2D.position.x = 683
 		$PlayerAttackDetector/CollisionShape2D.position.x = 642
+		$AttackDetector/CollisionShape2D.position.x = 630
 
 func hit():
 	knight_sprite_2d.monitoring = true
@@ -99,17 +97,13 @@ func _on_player_attack_detector_body_exited(body):
 
 func _on_player_attack_detector_body_entered(body):
 	knight_sprite_2d.play(\"attacking\")
-	velocity.x = 0
-	timer.wait_time = 1.5
+	$Timer.wait_time = 1.5
 	if body.get_name() == \"Player\":
 		body.reduce_health(10)
 	
 
 func _on_timer_timeout():
-	timer.stop()
-	$PlayerAttackDetector/CollisionShape2D.disabled = true
-	timer.start()
-	$PlayerAttackDetector/CollisionShape2D.disabled = false
+	pass
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ligru"]
@@ -232,7 +226,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4fdjj")
 }],
-"loop": false,
+"loop": true,
 "name": &"attacking",
 "speed": 6.0
 }, {
@@ -349,7 +343,7 @@ texture_filter = 1
 position = Vector2(700, 535)
 scale = Vector2(1.77, 2.10625)
 sprite_frames = SubResource("SpriteFrames_ug32u")
-animation = &"attacking"
+animation = &"idle"
 autoplay = "idle"
 flip_h = true
 
@@ -371,8 +365,7 @@ value = 50.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
+wait_time = 1.5
 autostart = true
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

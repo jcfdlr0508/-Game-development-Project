@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://5k723g23snmi"]
+[gd_scene load_steps=44 format=3 uid="uid://5k723g23snmi"]
 
 [ext_resource type="Script" path="res://scenes/Main_Character.gd" id="1_nrovx"]
 [ext_resource type="Texture2D" uid="uid://ck8ghfjvrlxfk" path="res://Player/Idle/HeroKnight_Idle_0.png" id="2_dkk0h"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://2sltpho3s057" path="res://Player/Run/HeroKnight_Run_7.png" id="17_ql70e"]
 [ext_resource type="Texture2D" uid="uid://tfu206ke4ycc" path="res://Player/Run/HeroKnight_Run_8.png" id="18_oftgp"]
 [ext_resource type="Texture2D" uid="uid://dpcsox3bvc0p5" path="res://Player/Run/HeroKnight_Run_9.png" id="19_1oma4"]
+[ext_resource type="PackedScene" uid="uid://su6tdeiht60f" path="res://pause_menu.tscn" id="37_q7rld"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xsjv0"]
 atlas = ExtResource("2_dkk0h")
@@ -206,7 +207,6 @@ animation = &"blocking"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(123, 288.5)
 shape = SubResource("RectangleShape2D_dh1ag")
 debug_color = Color(0.811765, 0, 0.25098, 0.419608)
@@ -214,7 +214,6 @@ debug_color = Color(0.811765, 0, 0.25098, 0.419608)
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-visible = false
 position = Vector2(182, 280)
 shape = SubResource("RectangleShape2D_c0edx")
 disabled = true
@@ -230,6 +229,14 @@ theme_override_styles/background = SubResource("StyleBoxFlat_xj4tl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sivit")
 value = 50.0
 show_percentage = false
+
+[node name="Pause Menu" parent="." instance=ExtResource("37_q7rld")]
+visible = false
+offset_left = 46.9999
+offset_top = 51.0
+offset_right = 46.9999
+offset_bottom = 51.0
+scale = Vector2(3.71933, 3.00449)
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]

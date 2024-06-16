@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://cdrhr6qy5fpsk"]
+[gd_scene load_steps=92 format=3 uid="uid://cdrhr6qy5fpsk"]
 
 [ext_resource type="Texture2D" uid="uid://dxniaa5ppsxnu" path="res://Tiles/brick_1.png" id="1_10wel"]
 [ext_resource type="Texture2D" uid="uid://dhvgyrrntm86k" path="res://Castle.png" id="1_su5ih"]
@@ -50,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://b13t54t15v73t" path="res://Decorations/barrel_damaged.png" id="48_uc7h7"]
 [ext_resource type="Script" path="res://scenes/Castle Collision.gd" id="50_jw2w3"]
 [ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="50_jy8oi"]
+[ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://scenes/enemy_knight.tscn" id="50_upd45"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7i0e8"]
 texture = ExtResource("1_10wel")
@@ -17919,6 +17920,9 @@ position = Vector2(13913, 390.5)
 shape = SubResource("RectangleShape2D_e1k73")
 
 [node name="Enemy-Archer" parent="." instance=ExtResource("50_jy8oi")]
-position = Vector2(219, 282)
+position = Vector2(201, 299)
+
+[node name="Enemy-Knight" parent="." instance=ExtResource("50_upd45")]
+position = Vector2(251, -43)
 
 [connection signal="body_entered" from="Castle Collision" to="Castle Collision" method="_on_body_entered"]

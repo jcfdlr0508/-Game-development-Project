@@ -1,7 +1,4 @@
-res://scenes/title.tscn
-res://scenes/level_3.tscn
-res://scenes/level_4.tscn
-res://scenes/level_5.tscn
-res://scenes/level_6.tscn
-res://scenes/level_2.tscn
-res://scenes/Entry_Stage.tscn
+res://scenes/enemy_knight.tscn
+res://scenes/enemy_archer.gd
+res://scenes/Main_Character.tscn
+res://scenes/Main_Character.gd
