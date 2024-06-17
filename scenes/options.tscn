@@ -141,5 +141,5 @@ Fernandez, Ysrael
 Pena, Eric John A.
  [/center]"
 
-[connection signal="pressed" from="NinePatchRect4/BackButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="NinePatchRect4/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="NinePatchRect4/BackButton" to="." method="_on_quit_button_pressed"]

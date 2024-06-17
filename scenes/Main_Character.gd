@@ -12,7 +12,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var has_double_jump = false
 var isAttacking = false
 var isBlocking = false
-var player = load("res://scenes/enemy_knight.tscn")
 var hp = 100
 var paused = false
 
@@ -119,3 +118,11 @@ func _on_attack_area_body_entered(body):
 	elif body.get_name() == "Enemy-Archer":
 		if not isBlocking:
 			body.reduce_health(50)
+
+func _on_fall_death_body_entered(body):
+	if body.get_name() == "Player":
+		body.reduce_health(100)
+		
+
+
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://esibjb6ree2n"]
+[gd_scene load_steps=42 format=3 uid="uid://esibjb6ree2n"]
 
 [ext_resource type="Texture2D" uid="uid://big5w32f0t6io" path="res://level5-6/Tiles/Tileset Inside.png" id="1_lo0u8"]
 [ext_resource type="Texture2D" uid="uid://cc4671t7xv5mx" path="res://level5-6/Backgrounds/Sky.png" id="1_n6ud6"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://wvt5cdgw4bi3" path="res://level-3 tileset/Dungeon Tile Set.png" id="4_cd3vp"]
 [ext_resource type="Script" path="res://scenes/moving_platform.gd" id="5_4nb2g"]
 [ext_resource type="Texture2D" uid="uid://bptsc5bn2r48e" path="res://Tiles/platform_2.png" id="6_mpxx2"]
+[ext_resource type="Script" path="res://scenes/FallDeath.gd" id="12_xduvy"]
+[ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="13_ah1rt"]
+[ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://scenes/enemy_knight.tscn" id="14_3wwx7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dclve"]
 texture = ExtResource("1_lo0u8")
@@ -1550,6 +1553,36 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv8nm"]
+size = Vector2(360, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pom8"]
+size = Vector2(227, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_visw7"]
+size = Vector2(323, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svw28"]
+size = Vector2(224, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ac04g"]
+size = Vector2(133, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ptcq"]
+size = Vector2(223, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odwoa"]
+size = Vector2(225, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afp0j"]
+size = Vector2(376, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l62xu"]
+size = Vector2(248, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nc8gq"]
+size = Vector2(377, 29)
+
 [node name="Level6" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -1607,11 +1640,11 @@ tile_set = SubResource("TileSet_wi2d3")
 format = 2
 layer_0/tile_data = PackedInt32Array(1441868, 327680, 14, 1441869, 327680, 14, 1441870, 327680, 14, 1441871, 327680, 14, 1441872, 327680, 14, 1441873, 327680, 14, 1441874, 327680, 14, 1441875, 327680, 14, 1441876, 327680, 14, 1441877, 327680, 14, 1441878, 327680, 14, 1441893, 327680, 14, 1441894, 327680, 14, 1441895, 327680, 14, 1441896, 327680, 14, 1441897, 327680, 14, 1441898, 327680, 14, 1441899, 327680, 14, 2031749, 327680, 14, 2031750, 327680, 14, 2031751, 327680, 14, 2031752, 327680, 14, 2031753, 327680, 14, 2031754, 327680, 14, 2031755, 327680, 14, -262052, 327680, 14, -262051, 327680, 14, -262050, 327680, 14, -262049, 327680, 14, -262048, 327680, 14, -262047, 327680, 14, -262046, 327680, 14, -262045, 327680, 14, -262044, 327680, 14, -262043, 327680, 14, 524332, 327680, 14, 524333, 327680, 14, 524334, 327680, 14, 524335, 327680, 14, 524336, 327680, 14, 524337, 327680, 14, 524338, 327680, 14, 524341, 327680, 14, 524342, 327680, 14, 524343, 327680, 14, 524344, 327680, 14, 524345, 327680, 14, 524346, 327680, 14, 524347, 327680, 14, 65605, 327680, 14, 65606, 327680, 14, 65607, 327680, 14, 65608, 327680, 14, 65609, 327680, 14, 65610, 327680, 14, 65611, 327680, 14, -196569, 327680, 14, -196568, 327680, 14, -196567, 327680, 14, -196566, 327680, 14, -196565, 327680, 14, -196564, 327680, 14, -196563, 327680, 14, -196562, 327680, 14, -196561, 327680, 14, -196560, 327680, 14, -196559, 327680, 14, 2031733, 327680, 14, 2031734, 327680, 14, 2031735, 327680, 14, 2031736, 327680, 14, 2031737, 327680, 14, 2031738, 327680, 14, 2031739, 327680, 14, 2031740, 327680, 14, 2031741, 327680, 14, 2031742, 327680, 14, 1179681, 327680, 14, 1179682, 393216, 14, 1179683, 327680, 14, 1245190, 327680, 14, 1245191, 393216, 14, 1245192, 327680, 14, 1245193, 393216, 14, 1245194, 327680, 14, 1245195, 393216, 14, 1245196, 327680, 14)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_7f867")]
+[node name="Player" parent="." instance=ExtResource("3_7f867")]
 position = Vector2(-35, 246)
 floor_stop_on_slope = false
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(136, 284)
 
 [node name="floating" type="TileMap" parent="."]
@@ -1819,3 +1852,76 @@ one_way_collision = true
 libraries = {
 "": SubResource("AnimationLibrary_ljiid")
 }
+
+[node name="FallDeath" type="Area2D" parent="."]
+script = ExtResource("12_xduvy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(2606, 745.5)
+shape = SubResource("RectangleShape2D_dv8nm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(3340.5, 735.5)
+shape = SubResource("RectangleShape2D_8pom8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(3903.5, 1029.5)
+shape = SubResource("RectangleShape2D_visw7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(4371, 1028)
+shape = SubResource("RectangleShape2D_visw7")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(301, 635.5)
+shape = SubResource("RectangleShape2D_svw28")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(1103.5, 617.5)
+shape = SubResource("RectangleShape2D_ac04g")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(1522.5, 277)
+shape = SubResource("RectangleShape2D_5ptcq")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(1811.5, 286.5)
+shape = SubResource("RectangleShape2D_odwoa")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(1421, -63.5)
+shape = SubResource("RectangleShape2D_afp0j")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(2317, 62.5)
+shape = SubResource("RectangleShape2D_l62xu")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(3110.5, -100.5)
+shape = SubResource("RectangleShape2D_nc8gq")
+
+[node name="Enemy-Archers" type="Node" parent="."]
+
+[node name="Enemy-Archer" type="Node" parent="Enemy-Archers"]
+
+[node name="Enemy-Archer" parent="Enemy-Archers/Enemy-Archer" instance=ExtResource("13_ah1rt")]
+position = Vector2(336, 346)
+
+[node name="Enemy-Archer2" type="Node" parent="Enemy-Archers"]
+
+[node name="Enemy-Archer" parent="Enemy-Archers/Enemy-Archer2" instance=ExtResource("13_ah1rt")]
+position = Vector2(682, 275)
+
+[node name="Enemy-Archer3" type="Node" parent="Enemy-Archers"]
+
+[node name="Enemy-Archer" parent="Enemy-Archers/Enemy-Archer3" instance=ExtResource("13_ah1rt")]
+position = Vector2(1439, -388)
+
+[node name="Enemy-Knights" type="Node" parent="."]
+
+[node name="Enemy-Knight" type="Node" parent="Enemy-Knights"]
+
+[node name="Enemy-Knight" parent="Enemy-Knights/Enemy-Knight" instance=ExtResource("14_3wwx7")]
+position = Vector2(5173, -1036)
+
+[connection signal="body_entered" from="FallDeath" to="FallDeath" method="_on_body_entered"]

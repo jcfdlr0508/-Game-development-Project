@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://6qnlbdrou3jl"]
+
+[ext_resource type="Script" path="res://scenes/FallDeath.gd" id="1_ccsob"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6bff"]
+
+[node name="FallDeath" type="Area2D"]
+process_mode = 3
+priority = 6
+script = ExtResource("1_ccsob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+process_mode = 3
+shape = SubResource("RectangleShape2D_p6bff")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

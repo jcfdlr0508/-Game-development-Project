@@ -17,7 +17,6 @@ var facing_right = false
 var hp = 100
 
 func _ready():
-	
 	#Timer
 	timer.start()
 	# Initialize the health bar
@@ -322,13 +321,10 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="Enemy-Knight" type="CharacterBody2D" groups=["Enemy-Knight"]]
-input_pickable = true
 script = SubResource("GDScript_4mmnb")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
 scale = Vector2(1.00131, 1.00405)
-collision_layer = 63
-collision_mask = 63
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2(685, 558)

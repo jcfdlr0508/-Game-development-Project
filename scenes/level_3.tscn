@@ -1,7 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwwe4c82jfrui"]
+[gd_scene load_steps=20 format=3 uid="uid://dwwe4c82jfrui"]
 
 [ext_resource type="Texture2D" uid="uid://wvt5cdgw4bi3" path="res://level-3 tileset/Dungeon Tile Set.png" id="1_priqr"]
 [ext_resource type="PackedScene" uid="uid://5k723g23snmi" path="res://scenes/Main_Character.tscn" id="2_qst4c"]
+[ext_resource type="PackedScene" uid="uid://6qnlbdrou3jl" path="res://scenes/FallDeath.tscn" id="3_ubde5"]
+[ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="4_idyhe"]
+[ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://scenes/enemy_knight.tscn" id="5_6d8el"]
+[ext_resource type="Texture2D" uid="uid://dhvgyrrntm86k" path="res://Castle.png" id="6_wm4al"]
+[ext_resource type="Script" path="res://scenes/CastleColision_lvl3.gd" id="7_qo13m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n5tjr"]
 texture = ExtResource("1_priqr")
@@ -850,6 +855,15 @@ sources/0 = SubResource("TileSetAtlasSource_r8mg6")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yd68h"]
 size = Vector2(45.5, 4.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_povib"]
+size = Vector2(1466, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_am8pm"]
+size = Vector2(151, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8pfm"]
+size = Vector2(588, 506)
+
 [node name="Level3" type="Node2D"]
 
 [node name="BG" type="TileMap" parent="."]
@@ -873,13 +887,6 @@ scale = Vector2(3, 2)
 tile_set = SubResource("TileSet_cjo0q")
 format = 2
 layer_0/tile_data = PackedInt32Array(3145777, 327680, 14, 3145760, 327680, 14, 3145761, 393216, 14, 3145762, 327680, 14, 3145763, 393216, 14, 3145764, 327680, 14, 3145765, 393216, 14, 3145766, 327680, 14, 3145767, 393216, 14, 3145768, 327680, 14, 3145769, 393216, 14, 3145775, 327680, 14, 3145776, 393216, 14, 3145778, 393216, 14, 3145779, 327680, 14, 3145780, 393216, 14, 3145781, 327680, 14, 3145782, 393216, 14, 3145783, 327680, 14, 3145786, 327680, 14, 3145787, 393216, 14, 3145788, 327680, 14, 3145789, 393216, 14, 3473490, 327680, 14, 3473491, 393216, 14, 3473492, 327680, 14)
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_qst4c")]
-position = Vector2(-19, 173)
-floor_stop_on_slope = false
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(136, 284)
 
 [node name="floating" type="TileMap" parent="."]
 scale = Vector2(2, 2)
@@ -908,3 +915,54 @@ position = Vector2(2984.5, 1052)
 shape = SubResource("RectangleShape2D_yd68h")
 one_way_collision = true
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="FallDeath" parent="." instance=ExtResource("3_ubde5")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(1461, 683.5)
+shape = SubResource("RectangleShape2D_povib")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="FallDeath"]
+position = Vector2(3210.5, 820)
+shape = SubResource("RectangleShape2D_am8pm")
+
+[node name="Enemy-Archers" type="Node" parent="."]
+
+[node name="Enemy-Archer" type="Node" parent="Enemy-Archers"]
+
+[node name="Enemy-Archer2" parent="Enemy-Archers/Enemy-Archer" instance=ExtResource("4_idyhe")]
+position = Vector2(3683, 30)
+
+[node name="Enemy-Archer2" type="Node" parent="Enemy-Archers"]
+
+[node name="Enemy-Archer2" parent="Enemy-Archers/Enemy-Archer2" instance=ExtResource("4_idyhe")]
+position = Vector2(2026, 354)
+
+[node name="Enenmy-Knights" type="Node" parent="."]
+
+[node name="Enenmy-Knight" type="Node" parent="Enenmy-Knights"]
+
+[node name="Enemy-Knight" parent="Enenmy-Knights/Enenmy-Knight" instance=ExtResource("5_6d8el")]
+position = Vector2(4653, -322)
+
+[node name="Castle" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(6158, 65.9999)
+scale = Vector2(0.892474, 1.15081)
+texture = ExtResource("6_wm4al")
+
+[node name="CastleColision" type="Area2D" parent="."]
+script = ExtResource("7_qo13m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CastleColision"]
+position = Vector2(6160, 69)
+shape = SubResource("RectangleShape2D_j8pfm")
+
+[node name="Player" parent="." instance=ExtResource("2_qst4c")]
+position = Vector2(-19, 173)
+floor_stop_on_slope = false
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(136, 284)
+
+[connection signal="body_entered" from="CastleColision" to="CastleColision" method="_on_body_entered"]
