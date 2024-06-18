@@ -8,3 +8,6 @@ res://scenes/level_5.tscn
 res://scenes/level_6.tscn
 res://scenes/enemy_archer.tscn
 res://scenes/collectable_drop.tscn
+res://scenes/collectable_drop.gd
+res://scenes/game_manager.gd
+res://scenes/Main_Character.tscn

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcyrt0qt6f8ps"]
+[gd_scene load_steps=10 format=3 uid="uid://dcyrt0qt6f8ps"]
 
 [ext_resource type="Texture2D" uid="uid://kyyrb5fmmfnf" path="res://Coin_Gems/MonedaD.png" id="1_nvj0b"]
+[ext_resource type="Script" path="res://scenes/collectable_drop.gd" id="1_w2nmg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bn1cm"]
 atlas = ExtResource("1_nvj0b")
@@ -52,6 +53,7 @@ height = 16.0
 [node name="CollectableDrop" type="Area2D"]
 position = Vector2(-52, -59)
 scale = Vector2(1.93078, 2.16738)
+script = ExtResource("1_w2nmg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -65,3 +67,5 @@ frame_progress = 0.0599659
 position = Vector2(125.697, 108.711)
 rotation = 0.0161496
 shape = SubResource("CapsuleShape2D_hv1a0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
