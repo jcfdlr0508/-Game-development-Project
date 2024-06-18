@@ -33,16 +33,16 @@ func reduce_health(amount):
 		die()
 
 func die():
-<<<<<<< HEAD
+
 	# Drop an item at the archer's position
 	var drop_item_instance = drop_item_scene.instantiate()
 	drop_item_instance.global_position = global_position  # Set to the global position of the archer
 	get_parent().add_child(drop_item_instance)
 	queue_free()
-=======
+
 	queue_free()
 	# Add any additional logic for when the player dies
->>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
+
 
 func shoot():
 	# When it reaches frame 9, it will spawn arrows
