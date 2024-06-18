@@ -6,10 +6,8 @@ signal arrow_shoot(arrow_scene, location)
 @onready var archer_health_bar = $HealthBar
 @onready var arrow = $Arrow
 @onready var arrow_scene = preload("res://Arrow.tscn")
-<<<<<<< HEAD
 @onready var drop_item_scene = preload("res://scenes/collectable_drop.tscn")  # Preload the drop item scene
-=======
->>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
+
 
 const speed = 150.0
 const JUMP_VELOCITY = -400.0
