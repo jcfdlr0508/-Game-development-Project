@@ -6,7 +6,7 @@ signal arrow_shoot(arrow_scene, location)
 @onready var archer_health_bar = $HealthBar
 @onready var arrow = $Arrow
 @onready var arrow_scene = preload("res://Arrow.tscn")
-@onready var drop_item_scene = preload("res://scenes/DropItem.tscn")  # Preload the drop item scene
+@onready var drop_item_scene = preload("res://scenes/collectable_drop.tscn")  # Preload the drop item scene
 
 const speed = 150.0
 const JUMP_VELOCITY = -400.0
@@ -34,7 +34,7 @@ func reduce_health(amount):
 func die():
 	# Drop an item at the archer's position
 	var drop_item_instance = drop_item_scene.instantiate()
-	drop_item_instance.position = self.position
+	drop_item_instance.global_position = global_position  # Set to the global position of the archer
 	get_parent().add_child(drop_item_instance)
 	queue_free()
 

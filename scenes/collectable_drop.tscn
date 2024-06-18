@@ -50,12 +50,18 @@ radius = 6.0
 height = 16.0
 
 [node name="CollectableDrop" type="Area2D"]
+position = Vector2(-52, -59)
+scale = Vector2(1.93078, 2.16738)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(125.697, 108.711)
+rotation = 0.0161496
 sprite_frames = SubResource("SpriteFrames_rsfjs")
 autoplay = "default"
 frame_progress = 0.0599659
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(125.697, 108.711)
+rotation = 0.0161496
 shape = SubResource("CapsuleShape2D_hv1a0")

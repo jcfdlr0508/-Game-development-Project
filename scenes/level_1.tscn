@@ -18384,6 +18384,6 @@ position = Vector2(136, 284)
 limit_top = -30000000
 
 [node name="CollectableDrop" parent="." instance=ExtResource("53_tiftn")]
-position = Vector2(71, 602)
+position = Vector2(-135, 363)
 
 [connection signal="body_entered" from="Castle Collision" to="Castle Collision" method="_on_body_entered"]
