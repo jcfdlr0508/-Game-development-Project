@@ -1,0 +1,375 @@
+[gd_scene load_steps=35 format=3 uid="uid://bg2btnpxnuw6u"]
+
+[ext_resource type="Texture2D" uid="uid://l1jenmk7n5m2" path="res://Enemies/Knights/_Attack.png" id="1_5xtpr"]
+[ext_resource type="Texture2D" uid="uid://c32wkx20mhqgg" path="res://Enemies/Knights/_Idle.png" id="1_fkhcr"]
+[ext_resource type="Texture2D" uid="uid://ioo8se2f77gt" path="res://Enemies/Knights/_Run.png" id="1_qpjwy"]
+
+[sub_resource type="GDScript" id="GDScript_4mmnb"]
+script/source = "extends CharacterBody2D
+@onready var knight_sprite_2d = $Sprite2D
+@onready var knight_health_bar = $HealthBar
+
+var speed = 150.0
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+var facing_right = false
+var main_character = preload(\"res://scenes/Main_Character.gd\")
+var hp = 100
+
+func _ready():
+	# Initialize the health bar
+	knight_health_bar.max_value = 100
+	knight_health_bar.value = hp
+	
+func reduce_health(amount):
+	knight_health_bar.value -= amount
+	if knight_health_bar.value <= 0:
+		die()
+
+func die():
+	queue_free()
+	# Add any additional logic for when the player dies
+
+
+func _physics_process(delta):
+	if knight_sprite_2d.animation == \"attacking\":
+		return
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	
+	if !$RayCast2D.is_colliding() && is_on_floor():
+		flip()
+	move_and_slide()
+	
+
+func _on_player_detector_body_entered(body):
+	knight_sprite_2d.play(\"idle\")
+	if body.get_name() == \"Player\":
+		if facing_right:
+			knight_sprite_2d.play(\"running\")
+			velocity.x = speed
+		else:
+			knight_sprite_2d.play(\"running\")
+			velocity.x = -speed
+	knight_health_bar.visible = true
+
+func flip():
+	facing_right = !facing_right
+	
+	if facing_right:
+		$Sprite2D.flip_h = false
+		velocity.x = speed
+		$RayCast2D.position.x = 725
+		$PlayerAttackDetector/CollisionShape2D.position.x = 766
+		$AttackDetector/CollisionShape2D.position.x = 771
+	else:
+		$Sprite2D.flip_h = true
+		velocity.x = -speed
+		$RayCast2D.position.x = 683
+		$PlayerAttackDetector/CollisionShape2D.position.x = 642
+		$AttackDetector/CollisionShape2D.position.x = 630
+
+func hit():
+	knight_sprite_2d.monitoring = true
+	
+func end_of_hit():
+	knight_sprite_2d.monitoring = false
+	
+func start_walk():
+	knight_sprite_2d.play(\"running\")
+
+
+
+func _on_attack_detector_body_entered(body):
+	get_tree().reload_current_scene()
+
+
+func _on_player_detector_body_exited(body):
+	knight_sprite_2d.play(\"idle\")
+	velocity.x = 0
+	knight_health_bar.visible = false
+
+
+
+func _on_player_attack_detector_body_exited(body):
+	knight_sprite_2d.stop()
+	start_walk()
+
+
+func _on_player_attack_detector_body_entered(body):
+	knight_sprite_2d.play(\"attacking\")
+	$Timer.wait_time = 1.5
+	if body.get_name() == \"Player\":
+		body.reduce_health(10)
+	
+
+func _on_timer_timeout():
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ligru"]
+size = Vector2(730, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tga6l"]
+size = Vector2(82, 81.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gm3g"]
+size = Vector2(41, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6hl6"]
+atlas = ExtResource("1_5xtpr")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpcec"]
+atlas = ExtResource("1_5xtpr")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8lyf"]
+atlas = ExtResource("1_5xtpr")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fdjj"]
+atlas = ExtResource("1_5xtpr")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea1ge"]
+atlas = ExtResource("1_fkhcr")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyglf"]
+atlas = ExtResource("1_fkhcr")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3dt1"]
+atlas = ExtResource("1_fkhcr")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mivv"]
+atlas = ExtResource("1_fkhcr")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwwhe"]
+atlas = ExtResource("1_fkhcr")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpv2p"]
+atlas = ExtResource("1_fkhcr")
+region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h211i"]
+atlas = ExtResource("1_fkhcr")
+region = Rect2(720, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eni2"]
+atlas = ExtResource("1_fkhcr")
+region = Rect2(840, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8a0m"]
+atlas = ExtResource("1_fkhcr")
+region = Rect2(960, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8nem"]
+atlas = ExtResource("1_fkhcr")
+region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yew1"]
+atlas = ExtResource("1_qpjwy")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci4q5"]
+atlas = ExtResource("1_qpjwy")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1fdj"]
+atlas = ExtResource("1_qpjwy")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80erl"]
+atlas = ExtResource("1_qpjwy")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25qph"]
+atlas = ExtResource("1_qpjwy")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gckth"]
+atlas = ExtResource("1_qpjwy")
+region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e42d2"]
+atlas = ExtResource("1_qpjwy")
+region = Rect2(720, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if2o5"]
+atlas = ExtResource("1_qpjwy")
+region = Rect2(840, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ico12"]
+atlas = ExtResource("1_qpjwy")
+region = Rect2(960, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prebj"]
+atlas = ExtResource("1_qpjwy")
+region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ug32u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6hl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpcec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8lyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fdjj")
+}],
+"loop": true,
+"name": &"attacking",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ea1ge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyglf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3dt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mivv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwwhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpv2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h211i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eni2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8a0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8nem")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yew1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci4q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1fdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80erl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25qph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gckth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e42d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if2o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ico12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prebj")
+}],
+"loop": true,
+"name": &"running",
+"speed": 12.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en8bn"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17d77"]
+bg_color = Color(0.803922, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Enemy-Knight" type="CharacterBody2D"]
+script = SubResource("GDScript_4mmnb")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+scale = Vector2(1.00131, 1.00405)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(685, 558)
+shape = SubResource("RectangleShape2D_ligru")
+
+[node name="PlayerAttackDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAttackDetector"]
+position = Vector2(642, 577.75)
+shape = SubResource("RectangleShape2D_tga6l")
+debug_color = Color(0, 0.537255, 0.960784, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(704, 579)
+shape = SubResource("RectangleShape2D_8gm3g")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(700, 535)
+scale = Vector2(1.77, 2.10625)
+sprite_frames = SubResource("SpriteFrames_ug32u")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+texture_filter = 1
+position = Vector2(683, 620)
+scale = Vector2(1, 0.44)
+collide_with_areas = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+texture_filter = 1
+offset_left = 685.0
+offset_top = 623.0
+offset_right = 726.0
+offset_bottom = 634.0
+theme_override_styles/background = SubResource("StyleBoxFlat_en8bn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_17d77")
+value = 50.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
+[connection signal="body_entered" from="PlayerAttackDetector" to="." method="_on_player_attack_detector_body_entered"]
+[connection signal="body_exited" from="PlayerAttackDetector" to="." method="_on_player_attack_detector_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
