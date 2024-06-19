@@ -1,8 +1,15 @@
 extends CharacterBody2D
 
+<<<<<<< HEAD
+@onready var sprite_2d: Node2D = $Sprite2D
+@onready var player_health_bar = $HealthBar
+@onready var pause_menu = $"Pause Menu"
+@onready var label = $UI/ScoreBg/Label
+=======
 @onready var sprite_2d = $Sprite2D
 @onready var player_health_bar = $HealthBar
 @onready var pause_menu = $"Pause Menu"
+>>>>>>> origin/master
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -14,6 +21,13 @@ var isAttacking = false
 var isBlocking = false
 var hp = 100
 var paused = false
+<<<<<<< HEAD
+var score = 0
+var enemies_killed = 0
+
+var inventory = []
+=======
+>>>>>>> origin/master
 
 func _ready():
 	# Initialize the health bar
@@ -28,7 +42,14 @@ func reduce_health(amount):
 
 func die():
 	queue_free()
+<<<<<<< HEAD
+	var pickup_scene = load("res://scenes/Pickup.tscn")
+	var pickup_instance = pickup_scene.instantiate()
+	pickup_instance.position = position
+	get_tree().root.add_child(pickup_instance)
+=======
 	# Add any additional logic for when the player dies
+>>>>>>> origin/master
 
 func pauseMenu():
 	if paused:
@@ -37,8 +58,12 @@ func pauseMenu():
 	else:
 		pause_menu.show()
 		Engine.time_scale = 0
+<<<<<<< HEAD
+	paused = not paused
+=======
 
 	paused = !paused
+>>>>>>> origin/master
 
 func _physics_process(delta):
 	if sprite_2d.animation == "attack1" and is_on_floor():
@@ -110,11 +135,35 @@ func _on_sprite_2d_animation_finished():
 		sprite_2d.animation = "idle"
 		$AttackArea/CollisionShape2D.disabled = true
 
+<<<<<<< HEAD
+=======
 # Enemy's Hurtbox
+>>>>>>> origin/master
 func _on_attack_area_body_entered(body):
 	if body.get_name() == "Enemy-Knight":
 		if not isBlocking:
 			body.reduce_health(35)
+<<<<<<< HEAD
+			enemies_killed += 1
+			add_points(10 * enemies_killed)  # Add points based on number of enemies killed
+	elif body.get_name() == "Enemy-Archer":
+		if not isBlocking:
+			body.reduce_health(50)
+			enemies_killed += 1
+			add_points(20 * enemies_killed)  # Add points based on number of enemies killed
+
+func add_points(points: int):
+	score += points
+	if label != null:
+		label.text = str(score)
+		print("Score updated: ", score)
+	else:
+		print("score_label is null")
+
+func _on_fall_death_body_entered(body):
+	if body.get_name() == "Player":
+		body.reduce
+=======
 	elif body.get_name() == "Enemy-Archer":
 		if not isBlocking:
 			body.reduce_health(50)
@@ -126,3 +175,4 @@ func _on_fall_death_body_entered(body):
 
 
 
+>>>>>>> origin/master

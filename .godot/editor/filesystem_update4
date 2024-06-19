@@ -1,3 +1,24 @@
-res://scenes/level_6.tscn
-res://scenes/FallDeath.gd
+res://scenes/level_1.tscn
 res://scenes/enemy_archer.gd
+res://scenes/FallDeath.gd
+res://scenes/level_2.tscn
+res://scenes/level_3.tscn
+res://scenes/level_4.tscn
+res://scenes/level_5.tscn
+res://scenes/level_6.tscn
+<<<<<<< HEAD
+res://Scripts/drop_data.gd
+res://scenes/enemy_archer.tscn
+res://scenes/Main_Character.gd
+res://Scripts/Pickup.gd
+res://scenes/Main_Character.tscn
+res://scenes/enemy_knight.tscn
+res://scenes/Pickup.tscn
+res://Scripts/ItemData.gd
+=======
+res://scenes/enemy_archer.tscn
+res://scenes/collectable_drop.tscn
+res://scenes/collectable_drop.gd
+res://scenes/game_manager.gd
+res://scenes/Main_Character.tscn
+>>>>>>> origin/master
