@@ -1,5 +1,3 @@
 res://scenes/title.tscn
 res://scenes/enemy_archer.gd
 res://scenes/FallDeath.gd
-res://scenes/FallDeath.tscn
-res://scenes/enemy_knight.tscn
