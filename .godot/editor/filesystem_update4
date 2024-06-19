@@ -6,3 +6,11 @@ res://scenes/level_3.tscn
 res://scenes/level_4.tscn
 res://scenes/level_5.tscn
 res://scenes/level_6.tscn
+res://Scripts/drop_data.gd
+res://scenes/enemy_archer.tscn
+res://scenes/Main_Character.gd
+res://Scripts/Pickup.gd
+res://scenes/Main_Character.tscn
+res://scenes/enemy_knight.tscn
+res://scenes/Pickup.tscn
+res://Scripts/ItemData.gd

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var sprite_2d = $Sprite2D
+@onready var sprite_2d: Node2D = $Sprite2D
 @onready var player_health_bar = $HealthBar
 @onready var pause_menu = $"Pause Menu"
 
@@ -14,6 +14,9 @@ var isAttacking = false
 var isBlocking = false
 var hp = 100
 var paused = false
+var score = 0
+
+var inventory = []
 
 func _ready():
 	# Initialize the health bar
@@ -28,7 +31,10 @@ func reduce_health(amount):
 
 func die():
 	queue_free()
-	# Add any additional logic for when the player dies
+	var pickup_scene = load("res://scenes/Pickup.tscn")
+	var pickup_instance = pickup_scene.instantiate()
+	pickup_instance.position = position
+	get_tree().root.add_child(pickup_instance)
 
 func pauseMenu():
 	if paused:
@@ -37,8 +43,7 @@ func pauseMenu():
 	else:
 		pause_menu.show()
 		Engine.time_scale = 0
-
-	paused = !paused
+	paused = not paused
 
 func _physics_process(delta):
 	if sprite_2d.animation == "attack1" and is_on_floor():
@@ -115,14 +120,26 @@ func _on_attack_area_body_entered(body):
 	if body.get_name() == "Enemy-Knight":
 		if not isBlocking:
 			body.reduce_health(35)
+			add_points(10)  # Add 10 points to the player's score
 	elif body.get_name() == "Enemy-Archer":
 		if not isBlocking:
 			body.reduce_health(50)
+			add_points(20)  # Add 20 points to the player's score
 
 func _on_fall_death_body_entered(body):
 	if body.get_name() == "Player":
 		body.reduce_health(100)
 		
+func _on_Pickup_body_entered(body):
+	if body.get_name() == "Pickup":
+		add_points(10)  # Add 10 points to the player's score
+		body.queue_free()
 
+func add_points(points: int):
+	score += points
+	print("Score: " + str(score))
 
-
+# Add items to inventory
+func add_to_inventory(item):
+	inventory.append(item)
+	# Update inventory UI or logic here if needed
