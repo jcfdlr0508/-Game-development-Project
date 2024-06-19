@@ -1,3 +1,4 @@
 res://scenes/title.tscn
 res://scenes/enemy_archer.gd
 res://scenes/FallDeath.gd
+res://scenes/Main_Character.gd
