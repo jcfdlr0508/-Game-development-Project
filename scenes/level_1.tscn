@@ -1,12 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=94 format=3 uid="uid://cdrhr6qy5fpsk"]
-=======
-<<<<<<< HEAD
-[gd_scene load_steps=96 format=3 uid="uid://cdrhr6qy5fpsk"]
-=======
-[gd_scene load_steps=94 format=3 uid="uid://cdrhr6qy5fpsk"]
->>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
->>>>>>> origin/master
 
 [ext_resource type="Texture2D" uid="uid://dxniaa5ppsxnu" path="res://Tiles/brick_1.png" id="1_0u6jv"]
 [ext_resource type="Texture2D" uid="uid://2qhtwyymbx2j" path="res://Tiles/brick_10.png" id="2_dfdg3"]
@@ -60,14 +52,6 @@
 [ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="50_b23ar"]
 [ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://scenes/enemy_knight.tscn" id="51_lgn82"]
 [ext_resource type="PackedScene" uid="uid://6qnlbdrou3jl" path="res://scenes/FallDeath.tscn" id="52_gks8s"]
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://dcyrt0qt6f8ps" path="res://scenes/collectable_drop.tscn" id="53_tiftn"]
-[ext_resource type="Script" path="res://scenes/game_manager.gd" id="54_ohp2e"]
-=======
->>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
->>>>>>> origin/master
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7i0e8"]
 texture = ExtResource("1_0u6jv")
@@ -18398,17 +18382,4 @@ floor_stop_on_slope = false
 position = Vector2(136, 284)
 limit_top = -30000000
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-[node name="CollectableDrop" parent="." instance=ExtResource("53_tiftn")]
-position = Vector2(-131, 369)
-
-[node name="GameManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("54_ohp2e")
-
-=======
->>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
->>>>>>> origin/master
 [connection signal="body_entered" from="Castle Collision" to="Castle Collision" method="_on_body_entered"]

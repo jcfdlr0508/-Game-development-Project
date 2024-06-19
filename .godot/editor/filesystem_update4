@@ -6,7 +6,6 @@ res://scenes/level_3.tscn
 res://scenes/level_4.tscn
 res://scenes/level_5.tscn
 res://scenes/level_6.tscn
-<<<<<<< HEAD
 res://Scripts/drop_data.gd
 res://scenes/enemy_archer.tscn
 res://scenes/Main_Character.gd
@@ -15,10 +14,17 @@ res://scenes/Main_Character.tscn
 res://scenes/enemy_knight.tscn
 res://scenes/Pickup.tscn
 res://Scripts/ItemData.gd
-=======
-res://scenes/enemy_archer.tscn
-res://scenes/collectable_drop.tscn
-res://scenes/collectable_drop.gd
-res://scenes/game_manager.gd
-res://scenes/Main_Character.tscn
->>>>>>> origin/master
+res://arrow.gd
+res://scenes/Castle Collision.gd
+res://scenes/Castle Collision_lvl2.gd
+res://scenes/Castle Collision_lvl5.gd
+res://scenes/CastleColision_lvl3.gd
+res://scenes/Castle_Collision_lvl4.gd
+res://scenes/CloudLayer.gd
+res://gameover_sceen.gd
+res://scenes/level_2.gd
+res://menu.gd
+res://scenes/moving_platform.gd
+res://options.gd
+res://pause_menu.gd
+res://scenes/title.gd
