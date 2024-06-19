@@ -1,0 +1,145 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdyfhdak5oh6u"]
+
+[ext_resource type="Script" path="res://options.gd" id="1_efl3e"]
+[ext_resource type="Texture2D" uid="uid://cn8vrjyox2ici" path="res://MainMenuBG/Menuehintergrund.jpg" id="2_xx2sm"]
+[ext_resource type="Texture2D" uid="uid://c0hdwlj0ggyy4" path="res://MainMenuBG/menu hud/button.png" id="3_2ft82"]
+[ext_resource type="Texture2D" uid="uid://cnt7euefgxybf" path="res://MainMenuBG/menu hud/about.png" id="4_3a2gx"]
+
+[sub_resource type="SystemFont" id="SystemFont_x4444"]
+font_names = PackedStringArray("Bookman Old Style")
+font_weight = 600
+
+[sub_resource type="SystemFont" id="SystemFont_grkna"]
+font_names = PackedStringArray("Bookman Old Style")
+font_weight = 500
+font_stretch = 75
+
+[sub_resource type="SystemFont" id="SystemFont_2e4qn"]
+font_names = PackedStringArray("Bookman Old Style")
+font_weight = 500
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_efl3e")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xx2sm")
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.5
+offset_top = -113.0
+offset_right = 143.5
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_2ft82")
+
+[node name="BackButton" type="MenuButton" parent="NinePatchRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 14.5
+offset_right = -32.0
+offset_bottom = -11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.87451, 0.803922, 0.207843, 1)
+theme_override_colors/font_pressed_color = Color(0.403922, 0.368627, 0.0705882, 1)
+theme_override_colors/font_hover_color = Color(0.976471, 0.94902, 0.686275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("SystemFont_x4444")
+theme_override_font_sizes/font_size = 29
+toggle_mode = false
+text = "Back
+"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -232.5
+offset_right = 232.5
+offset_bottom = 545.0
+grow_horizontal = 2
+texture = ExtResource("4_3a2gx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 59.0
+offset_right = -62.0
+offset_bottom = -355.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.87451, 0.803922, 0.207843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/normal_font = SubResource("SystemFont_grkna")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]
+ About the team: 
+ [/center]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_top = 157.0
+offset_right = -59.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.87451, 0.803922, 0.207843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = SubResource("SystemFont_2e4qn")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "[center]
+Cruda, Emmanuel
+De la Rosa, Jireh
+Canales, Marc Samuel
+Fernandez, Ysrael
+Pena, Eric John A.
+ [/center]"
+
+[connection signal="pressed" from="NinePatchRect4/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="NinePatchRect4/BackButton" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=3 uid="uid://d15ud3cf4ucy"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_cq3n0"]
+[ext_resource type="Texture2D" uid="uid://cn8vrjyox2ici" path="res://MainMenuBG/Menuehintergrund.jpg" id="2_0tka5"]
+
+[sub_resource type="Theme" id="Theme_r7oy7"]
+
+[sub_resource type="SystemFont" id="SystemFont_wdg73"]
+font_names = PackedStringArray("Bookman Old Style")
+
+[sub_resource type="SystemFont" id="SystemFont_wbiih"]
+font_names = PackedStringArray("Garamond")
+font_weight = 600
+
+[sub_resource type="SystemFont" id="SystemFont_0cf4b"]
+font_names = PackedStringArray("Garamond")
+font_weight = 600
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cq3n0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0tka5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme = SubResource("Theme_r7oy7")
+theme_override_constants/separation = 60
+
+[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.486275, 0.501961, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 7
+theme_override_constants/shadow_offset_y = 12
+theme_override_constants/outline_size = 30
+theme_override_constants/shadow_outline_size = 14
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = SubResource("SystemFont_wdg73")
+theme_override_font_sizes/font_size = 70
+text = "Herofire:
+Rise of the Chivalrous Knights
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 23
+alignment = 1
+
+[node name="Separator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="New Game" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_wbiih")
+theme_override_font_sizes/font_size = 40
+text = "Start Game"
+
+[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_0cf4b")
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

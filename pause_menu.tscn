@@ -1,0 +1,171 @@
+[gd_scene load_steps=23 format=3 uid="uid://su6tdeiht60f"]
+
+[ext_resource type="Script" path="res://pause_menu.gd" id="1_6ldpk"]
+[ext_resource type="Texture2D" uid="uid://cnt7euefgxybf" path="res://MainMenuBG/menu hud/about.png" id="2_c80g8"]
+[ext_resource type="Texture2D" uid="uid://c0hdwlj0ggyy4" path="res://MainMenuBG/menu hud/button.png" id="2_ojqsl"]
+
+[sub_resource type="SystemFont" id="SystemFont_4cjdr"]
+font_names = PackedStringArray("Bookman Old Style")
+font_weight = 600
+
+[sub_resource type="SystemFont" id="SystemFont_u1fwa"]
+font_names = PackedStringArray("Bookman Old Style")
+font_weight = 600
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xk54m"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ywyj"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qn6h8"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8a2v0"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a0exf"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="SystemFont" id="SystemFont_e2834"]
+font_names = PackedStringArray("Bookman Old Style")
+font_weight = 600
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n7g3l"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_276gx"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fp2uq"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cspcb"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bwnqt"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="SystemFont" id="SystemFont_6st4a"]
+font_names = PackedStringArray("Bookman Old Style")
+font_weight = 600
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q602g"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pi47j"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8po1y"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5mwfn"]
+texture = ExtResource("2_ojqsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i6krk"]
+texture = ExtResource("2_ojqsl")
+
+[node name="Pause Menu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = 39.0
+offset_right = -5.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.595878, 0.487246)
+script = ExtResource("1_6ldpk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -21.0
+offset_top = -17.0
+offset_right = 95.0
+offset_bottom = 169.0
+texture = ExtResource("2_c80g8")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_top = 4.1047
+offset_right = 73.0
+offset_bottom = 28.1047
+theme_override_colors/font_color = Color(0.87451, 0.803922, 0.207843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("SystemFont_4cjdr")
+theme_override_font_sizes/font_size = 20
+text = "Paused"
+
+[node name="Resume" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 2
+offset_left = -7.0
+offset_top = 28.0
+offset_right = 78.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0.87451, 0.803922, 0.207843, 1)
+theme_override_colors/font_pressed_color = Color(0.403922, 0.368627, 0.0705882, 1)
+theme_override_colors/font_hover_color = Color(0.976471, 0.94902, 0.686275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("SystemFont_u1fwa")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_xk54m")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7ywyj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qn6h8")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_8a2v0")
+theme_override_styles/focus = SubResource("StyleBoxTexture_a0exf")
+text = "Resume"
+
+[node name="Main Menu" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 2
+offset_left = -6.71279
+offset_top = 67.7276
+offset_right = 79.2872
+offset_bottom = 110.728
+theme_override_colors/font_color = Color(0.87451, 0.803922, 0.207843, 1)
+theme_override_colors/font_pressed_color = Color(0.403922, 0.368627, 0.0705882, 1)
+theme_override_colors/font_hover_color = Color(0.976471, 0.94902, 0.686275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("SystemFont_e2834")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxTexture_n7g3l")
+theme_override_styles/hover = SubResource("StyleBoxTexture_276gx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fp2uq")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_cspcb")
+theme_override_styles/focus = SubResource("StyleBoxTexture_bwnqt")
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 2
+offset_left = -6.71279
+offset_top = 104.67
+offset_right = 76.2872
+offset_bottom = 143.67
+theme_override_colors/font_color = Color(0.87451, 0.803922, 0.207843, 1)
+theme_override_colors/font_pressed_color = Color(0.403922, 0.368627, 0.0705882, 1)
+theme_override_colors/font_hover_color = Color(0.976471, 0.94902, 0.686275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("SystemFont_6st4a")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxTexture_q602g")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pi47j")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8po1y")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_5mwfn")
+theme_override_styles/focus = SubResource("StyleBoxTexture_i6krk")
+text = "Quit"
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
