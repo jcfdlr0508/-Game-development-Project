@@ -1588,6 +1588,7 @@ size = Vector2(377, 29)
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-242, 80)
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(2277, 0)
 
@@ -1597,6 +1598,7 @@ scale = Vector2(7.12031, 6.05625)
 texture = ExtResource("1_n6ud6")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-242, 80)
 motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(2277, 0)
 script = ExtResource("2_t51mn")
@@ -1607,6 +1609,7 @@ scale = Vector2(7.12031, 6.40938)
 texture = ExtResource("2_b5pj6")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-242, 80)
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(2277, 0)
 
@@ -1616,6 +1619,7 @@ scale = Vector2(7.12031, 5.725)
 texture = ExtResource("3_mt6o4")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-242, 80)
 motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(2277, 0)
 
@@ -1625,6 +1629,7 @@ scale = Vector2(7.12031, 6.86562)
 texture = ExtResource("4_2wjqf")
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-242, 80)
 tile_set = SubResource("TileSet_cdmjl")
 rendering_quadrant_size = 32
 collision_visibility_mode = 2
@@ -1640,14 +1645,8 @@ tile_set = SubResource("TileSet_wi2d3")
 format = 2
 layer_0/tile_data = PackedInt32Array(1441868, 327680, 14, 1441869, 327680, 14, 1441870, 327680, 14, 1441871, 327680, 14, 1441872, 327680, 14, 1441873, 327680, 14, 1441874, 327680, 14, 1441875, 327680, 14, 1441876, 327680, 14, 1441877, 327680, 14, 1441878, 327680, 14, 1441893, 327680, 14, 1441894, 327680, 14, 1441895, 327680, 14, 1441896, 327680, 14, 1441897, 327680, 14, 1441898, 327680, 14, 1441899, 327680, 14, 2031749, 327680, 14, 2031750, 327680, 14, 2031751, 327680, 14, 2031752, 327680, 14, 2031753, 327680, 14, 2031754, 327680, 14, 2031755, 327680, 14, -262052, 327680, 14, -262051, 327680, 14, -262050, 327680, 14, -262049, 327680, 14, -262048, 327680, 14, -262047, 327680, 14, -262046, 327680, 14, -262045, 327680, 14, -262044, 327680, 14, -262043, 327680, 14, 524332, 327680, 14, 524333, 327680, 14, 524334, 327680, 14, 524335, 327680, 14, 524336, 327680, 14, 524337, 327680, 14, 524338, 327680, 14, 524341, 327680, 14, 524342, 327680, 14, 524343, 327680, 14, 524344, 327680, 14, 524345, 327680, 14, 524346, 327680, 14, 524347, 327680, 14, 65605, 327680, 14, 65606, 327680, 14, 65607, 327680, 14, 65608, 327680, 14, 65609, 327680, 14, 65610, 327680, 14, 65611, 327680, 14, -196569, 327680, 14, -196568, 327680, 14, -196567, 327680, 14, -196566, 327680, 14, -196565, 327680, 14, -196564, 327680, 14, -196563, 327680, 14, -196562, 327680, 14, -196561, 327680, 14, -196560, 327680, 14, -196559, 327680, 14, 2031733, 327680, 14, 2031734, 327680, 14, 2031735, 327680, 14, 2031736, 327680, 14, 2031737, 327680, 14, 2031738, 327680, 14, 2031739, 327680, 14, 2031740, 327680, 14, 2031741, 327680, 14, 2031742, 327680, 14, 1179681, 327680, 14, 1179682, 393216, 14, 1179683, 327680, 14, 1245190, 327680, 14, 1245191, 393216, 14, 1245192, 327680, 14, 1245193, 393216, 14, 1245194, 327680, 14, 1245195, 393216, 14, 1245196, 327680, 14)
 
-[node name="Player" parent="." instance=ExtResource("3_7f867")]
-position = Vector2(-35, 246)
-floor_stop_on_slope = false
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(136, 284)
-
 [node name="floating" type="TileMap" parent="."]
+position = Vector2(-242, 80)
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_4ov20")
 format = 2
@@ -1717,7 +1716,7 @@ shape = SubResource("RectangleShape2D_kxjkl")
 one_way_collision = true
 
 [node name="MovingPlatformUp" type="Path2D" parent="."]
-position = Vector2(1832, 171)
+position = Vector2(1590, 251)
 curve = SubResource("Curve2D_0u6lm")
 script = ExtResource("5_4nb2g")
 loop = false
@@ -1752,7 +1751,7 @@ libraries = {
 }
 
 [node name="MovingPlatformUp2" type="Path2D" parent="."]
-position = Vector2(1654, 61)
+position = Vector2(1412, 141)
 curve = SubResource("Curve2D_uyi3r")
 script = ExtResource("5_4nb2g")
 loop = false
@@ -1783,7 +1782,7 @@ libraries = {
 }
 
 [node name="MovingPlatformUp3" type="Path2D" parent="."]
-position = Vector2(1652, -102)
+position = Vector2(1410, -22)
 curve = SubResource("Curve2D_n24iu")
 script = ExtResource("5_4nb2g")
 loop = false
@@ -1818,7 +1817,7 @@ libraries = {
 }
 
 [node name="MovingPlatformUp4" type="Path2D" parent="."]
-position = Vector2(1969, -407)
+position = Vector2(1727, -327)
 curve = SubResource("Curve2D_3u8ye")
 script = ExtResource("5_4nb2g")
 loop = false
@@ -1854,6 +1853,7 @@ libraries = {
 }
 
 [node name="FallDeath" type="Area2D" parent="."]
+position = Vector2(-242, 80)
 script = ExtResource("12_xduvy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallDeath"]
@@ -1905,23 +1905,30 @@ shape = SubResource("RectangleShape2D_nc8gq")
 [node name="Enemy-Archer" type="Node" parent="Enemy-Archers"]
 
 [node name="Enemy-Archer" parent="Enemy-Archers/Enemy-Archer" instance=ExtResource("13_ah1rt")]
-position = Vector2(336, 346)
+position = Vector2(94, 426)
 
 [node name="Enemy-Archer2" type="Node" parent="Enemy-Archers"]
 
 [node name="Enemy-Archer" parent="Enemy-Archers/Enemy-Archer2" instance=ExtResource("13_ah1rt")]
-position = Vector2(682, 275)
+position = Vector2(440, 355)
 
 [node name="Enemy-Archer3" type="Node" parent="Enemy-Archers"]
 
 [node name="Enemy-Archer" parent="Enemy-Archers/Enemy-Archer3" instance=ExtResource("13_ah1rt")]
-position = Vector2(1439, -388)
+position = Vector2(1197, -308)
 
 [node name="Enemy-Knights" type="Node" parent="."]
 
 [node name="Enemy-Knight" type="Node" parent="Enemy-Knights"]
 
 [node name="Enemy-Knight" parent="Enemy-Knights/Enemy-Knight" instance=ExtResource("14_3wwx7")]
-position = Vector2(5173, -1036)
+position = Vector2(4931, -956)
+
+[node name="Player" parent="." instance=ExtResource("3_7f867")]
+position = Vector2(-260, 317)
+floor_stop_on_slope = false
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(136, 284)
 
 [connection signal="body_entered" from="FallDeath" to="FallDeath" method="_on_body_entered"]

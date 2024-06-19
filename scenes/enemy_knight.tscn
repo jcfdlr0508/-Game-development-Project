@@ -103,7 +103,6 @@ func _on_player_attack_detector_body_entered(body):
 	timer.wait_time = 1.5
 	if body.get_name() == \"Player\":
 		body.reduce_health(10)
-	
 
 func _on_timer_timeout():
 	timer.stop()

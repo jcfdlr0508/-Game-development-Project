@@ -1,8 +1,11 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var sprite_2d = $Sprite2D
 @onready var player_health_bar = $HealthBar
 @onready var pause_menu = $"Pause Menu"
+@onready var lives_score = $Control/Lives
+
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -14,21 +17,48 @@ var isAttacking = false
 var isBlocking = false
 var hp = 100
 var paused = false
+var lives = 3
+var respawn_point = Vector2(-278, 285)
 
 func _ready():
-	# Initialize the health bar
+	GameManager.player = self
 	player_health_bar.max_value = 100
 	player_health_bar.value = hp
+	lives_score.text = "x" + str(lives)
+	# Connect checkpoint signal if not connected via editor
+	# $Checkpoint.connect("body_entered", self, "_on_checkpoint_body_entered")
 
 func reduce_health(amount):
 	if not isBlocking:
-		player_health_bar.value -= amount
-		if player_health_bar.value <= 0:
+		hp -= amount
+		player_health_bar.value = hp
+		print("Reduced health by", amount, "Current HP:", hp)
+		if hp <= 0:
 			die()
-
+func increase_health(amount):
+	hp += amount
+	player_health_bar.value = hp
+func increase_lives(amount):
+	lives += amount
 func die():
-	queue_free()
-	# Add any additional logic for when the player dies
+	lives -= 1
+	print("Died. Remaining lives:", lives)
+	lives_score.text = "x" + str(lives)
+	if lives >= 0:
+		GameManager.respawn_player()
+		respawn()
+	else:
+		print("Game Over")
+		get_tree().change_scene_to_file("res://gameover_sceen.tscn")
+		queue_free()
+
+func respawn():
+	if GameManager.current_checkpoint and not GameManager.current_checkpoint.is_queued_for_deletion():
+		position = GameManager.current_checkpoint.position + Vector2(0, -285)
+	else:
+		position = respawn_point
+	hp = 100
+	player_health_bar.value = hp
 
 func pauseMenu():
 	if paused:
@@ -94,7 +124,7 @@ func _physics_process(delta):
 		else:
 			if is_on_floor():
 				sprite_2d.animation = "idle"
-			velocity.x = 0  # Stop horizontal movement when no input
+			velocity.x = 0
 
 	move_and_slide()
 
@@ -110,7 +140,6 @@ func _on_sprite_2d_animation_finished():
 		sprite_2d.animation = "idle"
 		$AttackArea/CollisionShape2D.disabled = true
 
-# Enemy's Hurtbox
 func _on_attack_area_body_entered(body):
 	if body.get_name() == "Enemy-Knight":
 		if not isBlocking:
@@ -121,8 +150,14 @@ func _on_attack_area_body_entered(body):
 
 func _on_fall_death_body_entered(body):
 	if body.get_name() == "Player":
-		body.reduce_health(100)
-		
+		reduce_health(100)
 
+func _on_checkpoint_body_entered(body):
+	if body is Checkpoint:
+		if not body.activated:
+			body.activate()
+			GameManager.current_checkpoint = body
 
-
+func change_level(new_level_path):
+	GameManager.reset_checkpoint()
+	get_tree().change_scene_to_file(new_level_path)
