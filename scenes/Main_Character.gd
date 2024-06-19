@@ -1,12 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
-@onready var sprite_2d: Node2D = $Sprite2D
+@onready var sprite_2d = $Sprite2D
 @onready var player_health_bar = $HealthBar
 @onready var pause_menu = $"Pause Menu"
-@onready var label = $UI/ScoreBg/Label
 @onready var lives_score = $Control/Lives
-
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -20,11 +18,6 @@ var hp = 100
 var paused = false
 var lives = 3
 var respawn_point = Vector2(-278, 285)
-
-var score = 0
-var enemies_killed = 0
-
-var inventory = []
 
 func _ready():
 	GameManager.player = self
@@ -41,11 +34,17 @@ func reduce_health(amount):
 		print("Reduced health by", amount, "Current HP:", hp)
 		if hp <= 0:
 			die()
+
 func increase_health(amount):
 	hp += amount
+	if hp > 100:
+		hp = 100
 	player_health_bar.value = hp
+
 func increase_lives(amount):
 	lives += amount
+	lives_score.text = "x" + str(lives)  # Update the UI to reflect the new lives
+
 func die():
 	lives -= 1
 	print("Died. Remaining lives:", lives)
@@ -55,7 +54,7 @@ func die():
 		respawn()
 	else:
 		print("Game Over")
-		get_tree().change_scene_to_file("res://gameover_sceen.tscn")
+		get_tree().change_scene_to_file("res://gameover_screen.tscn")
 		queue_free()
 
 func respawn():
@@ -65,14 +64,6 @@ func respawn():
 		position = respawn_point
 	hp = 100
 	player_health_bar.value = hp
-	queue_free()
-	var pickup_scene = load("res://scenes/Pickup.tscn")
-	var pickup_instance = pickup_scene.instantiate()
-	pickup_instance.position = position
-	get_tree().root.add_child(pickup_instance)
-
-	# Add any additional logic for when the player dies
-
 
 func pauseMenu():
 	if paused:
@@ -81,8 +72,6 @@ func pauseMenu():
 	else:
 		pause_menu.show()
 		Engine.time_scale = 0
-	paused = not paused
-
 
 	paused = !paused
 
@@ -155,34 +144,16 @@ func _on_sprite_2d_animation_finished():
 		isAttacking = false
 		sprite_2d.animation = "idle"
 		$AttackArea/CollisionShape2D.disabled = true
-# Enemy's Hurtbox
+
 func _on_attack_area_body_entered(body):
 	if body.get_name() == "Enemy-Knight":
 		if not isBlocking:
 			body.reduce_health(35)
-
-			enemies_killed += 1
-			add_points(10 * enemies_killed)  # Add points based on number of enemies killed
 	elif body.get_name() == "Enemy-Archer":
 		if not isBlocking:
 			body.reduce_health(50)
-			enemies_killed += 1
-			add_points(20 * enemies_killed)  # Add points based on number of enemies killed
-
-func add_points(points: int):
-	score += points
-	if label != null:
-		label.text = str(score)
-		print("Score updated: ", score)
-	else:
-		print("score_label is null")
 
 func _on_fall_death_body_entered(body):
-	if body.get_name() == "Player":
-		body.reduce
-	elif body.get_name() == "Enemy-Archer":
-		if not isBlocking:
-			body.reduce_health(50)
 	if body.get_name() == "Player":
 		reduce_health(100)
 
@@ -191,6 +162,7 @@ func _on_checkpoint_body_entered(body):
 		if not body.activated:
 			body.activate()
 			GameManager.current_checkpoint = body
+
 func change_level(new_level_path):
 	GameManager.reset_checkpoint()
 	get_tree().change_scene_to_file(new_level_path)
