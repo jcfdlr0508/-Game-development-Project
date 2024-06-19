@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Control
 Label
 TextureRect
@@ -13,3 +14,28 @@ MarginContainer
 Button
 Container
 MenuButton
+=======
+Node
+<<<<<<< HEAD
+Area2D
+CollisionShape2D
+AnimatedSprite2D
+=======
+CollisionShape2D
+Area2D
+>>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
+VBoxContainer
+MarginContainer
+Button
+Label
+TextureRect
+Container
+MenuButton
+NinePatchRect
+Timer
+RayCast2D
+<<<<<<< HEAD
+=======
+VisibleOnScreenEnabler2D
+>>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
+>>>>>>> origin/master

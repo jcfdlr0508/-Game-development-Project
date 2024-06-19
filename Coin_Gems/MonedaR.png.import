@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://dwdoo1iglke4s"
+=======
+uid="uid://buykn7dic05s5"
+>>>>>>> origin/master
 path="res://.godot/imported/MonedaR.png-4e28cfd4c124a2de68ce4fb4bba38180.ctex"
 metadata={
 "vram_texture": false

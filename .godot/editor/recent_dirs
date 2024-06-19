@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 res://ui
 res://MainMenuBG/menu hud
+=======
+>>>>>>> origin/master
 res://scenes
 res://Coin_Gems
 res://
 res://Tiles
+<<<<<<< HEAD
+=======
+res://MainMenuBG/menu hud
+>>>>>>> origin/master
 res://MainMenuBG
 res://Enemies/Archers
 res://Enemies/Knights

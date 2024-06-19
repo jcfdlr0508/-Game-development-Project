@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://cvmml6gfhfjl7"
+=======
+uid="uid://t88hk6dfkvy6"
+>>>>>>> origin/master
 path="res://.godot/imported/spr_coin_azu.png-11536a30c7c60845c0af3ad9960a2c79.ctex"
 metadata={
 "vram_texture": false
