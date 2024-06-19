@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://5k723g23snmi"]
+[gd_scene load_steps=45 format=3 uid="uid://5k723g23snmi"]
 
 [ext_resource type="Script" path="res://scenes/Main_Character.gd" id="1_nrovx"]
 [ext_resource type="Texture2D" uid="uid://ck8ghfjvrlxfk" path="res://Player/Idle/HeroKnight_Idle_0.png" id="2_dkk0h"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://tfu206ke4ycc" path="res://Player/Run/HeroKnight_Run_8.png" id="18_oftgp"]
 [ext_resource type="Texture2D" uid="uid://dpcsox3bvc0p5" path="res://Player/Run/HeroKnight_Run_9.png" id="19_1oma4"]
 [ext_resource type="PackedScene" uid="uid://su6tdeiht60f" path="res://pause_menu.tscn" id="37_q7rld"]
+[ext_resource type="Texture2D" uid="uid://luh7dd6l1juy" path="res://ui/score system ui.png" id="38_2fvh1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xsjv0"]
 atlas = ExtResource("2_dkk0h")
@@ -237,6 +238,44 @@ offset_top = 51.0
 offset_right = 46.9999
 offset_bottom = 51.0
 scale = Vector2(3.71933, 3.00449)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ScoreBg" type="TextureRect" parent="UI"]
+offset_left = -431.0
+offset_top = 547.0
+offset_right = 1458.0
+offset_bottom = 1279.0
+scale = Vector2(0.146455, 0.0707826)
+texture = ExtResource("38_2fvh1")
+
+[node name="Label" type="Label" parent="UI/ScoreBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.4841
+offset_top = 28.2564
+offset_right = -20.4841
+offset_bottom = 28.2564
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score Text" type="Label" parent="UI"]
+offset_left = -405.0
+offset_top = 510.0
+offset_right = -332.0
+offset_bottom = 545.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "Score:"
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]

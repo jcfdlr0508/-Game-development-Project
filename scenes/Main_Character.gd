@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var sprite_2d: Node2D = $Sprite2D
 @onready var player_health_bar = $HealthBar
 @onready var pause_menu = $"Pause Menu"
+@onready var label = $UI/ScoreBg/Label
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -15,6 +16,7 @@ var isBlocking = false
 var hp = 100
 var paused = false
 var score = 0
+var enemies_killed = 0
 
 var inventory = []
 
@@ -115,31 +117,26 @@ func _on_sprite_2d_animation_finished():
 		sprite_2d.animation = "idle"
 		$AttackArea/CollisionShape2D.disabled = true
 
-# Enemy's Hurtbox
 func _on_attack_area_body_entered(body):
 	if body.get_name() == "Enemy-Knight":
 		if not isBlocking:
 			body.reduce_health(35)
-			add_points(10)  # Add 10 points to the player's score
+			enemies_killed += 1
+			add_points(10 * enemies_killed)  # Add points based on number of enemies killed
 	elif body.get_name() == "Enemy-Archer":
 		if not isBlocking:
 			body.reduce_health(50)
-			add_points(20)  # Add 20 points to the player's score
-
-func _on_fall_death_body_entered(body):
-	if body.get_name() == "Player":
-		body.reduce_health(100)
-		
-func _on_Pickup_body_entered(body):
-	if body.get_name() == "Pickup":
-		add_points(10)  # Add 10 points to the player's score
-		body.queue_free()
+			enemies_killed += 1
+			add_points(20 * enemies_killed)  # Add points based on number of enemies killed
 
 func add_points(points: int):
 	score += points
-	print("Score: " + str(score))
+	if label != null:
+		label.text = str(score)
+		print("Score updated: ", score)
+	else:
+		print("score_label is null")
 
-# Add items to inventory
-func add_to_inventory(item):
-	inventory.append(item)
-	# Update inventory UI or logic here if needed
+func _on_fall_death_body_entered(body):
+	if body.get_name() == "Player":
+		body.reduce

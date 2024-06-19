@@ -1,3 +1,9 @@
+Control
+Label
+TextureRect
+PanelContainer
+Panel
+CanvasLayer
 CollisionShape2D
 AnimatedSprite2D
 Area2D
@@ -5,10 +11,5 @@ Node
 VBoxContainer
 MarginContainer
 Button
-Label
-TextureRect
 Container
 MenuButton
-NinePatchRect
-Timer
-RayCast2D

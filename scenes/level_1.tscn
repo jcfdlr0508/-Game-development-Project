@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://cdrhr6qy5fpsk"]
+[gd_scene load_steps=94 format=3 uid="uid://cdrhr6qy5fpsk"]
 
 [ext_resource type="Texture2D" uid="uid://dxniaa5ppsxnu" path="res://Tiles/brick_1.png" id="1_0u6jv"]
 [ext_resource type="Texture2D" uid="uid://2qhtwyymbx2j" path="res://Tiles/brick_10.png" id="2_dfdg3"]
@@ -52,7 +52,6 @@
 [ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="50_b23ar"]
 [ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://scenes/enemy_knight.tscn" id="51_lgn82"]
 [ext_resource type="PackedScene" uid="uid://6qnlbdrou3jl" path="res://scenes/FallDeath.tscn" id="52_gks8s"]
-[ext_resource type="PackedScene" uid="uid://d2ofgnannn1qa" path="res://scenes/Pickup.tscn" id="53_5wyve"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7i0e8"]
 texture = ExtResource("1_0u6jv")
@@ -18382,8 +18381,5 @@ floor_stop_on_slope = false
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(136, 284)
 limit_top = -30000000
-
-[node name="Area2D" parent="." instance=ExtResource("53_5wyve")]
-position = Vector2(-5, 596)
 
 [connection signal="body_entered" from="Castle Collision" to="Castle Collision" method="_on_body_entered"]
