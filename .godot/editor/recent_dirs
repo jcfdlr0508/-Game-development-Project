@@ -1,8 +1,23 @@
+<<<<<<< HEAD
 res://scenes
 res://Decorations/Animated Decorations/Checkpoint flag
 res://
 res://Tiles
+=======
+<<<<<<< HEAD
+res://ui
+>>>>>>> faa9e41507105e16943be517f220dac6329ba2b8
 res://MainMenuBG/menu hud
+=======
+>>>>>>> origin/master
+res://scenes
+res://Coin_Gems
+res://
+res://Tiles
+<<<<<<< HEAD
+=======
+res://MainMenuBG/menu hud
+>>>>>>> origin/master
 res://MainMenuBG
 res://Enemies/Archers
 res://Enemies/Knights

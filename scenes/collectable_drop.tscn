@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcyrt0qt6f8ps"]
+
+[ext_resource type="Texture2D" uid="uid://kyyrb5fmmfnf" path="res://Coin_Gems/MonedaD.png" id="1_nvj0b"]
+[ext_resource type="Script" path="res://scenes/collectable_drop.gd" id="1_w2nmg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn1cm"]
+atlas = ExtResource("1_nvj0b")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2ky7"]
+atlas = ExtResource("1_nvj0b")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgy7s"]
+atlas = ExtResource("1_nvj0b")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n71kh"]
+atlas = ExtResource("1_nvj0b")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i3yx"]
+atlas = ExtResource("1_nvj0b")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rsfjs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn1cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2ky7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgy7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n71kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i3yx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv1a0"]
+radius = 6.0
+height = 16.0
+
+[node name="CollectableDrop" type="Area2D"]
+position = Vector2(-52, -59)
+scale = Vector2(1.93078, 2.16738)
+script = ExtResource("1_w2nmg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(125.697, 108.711)
+rotation = 0.0161496
+sprite_frames = SubResource("SpriteFrames_rsfjs")
+autoplay = "default"
+frame_progress = 0.0599659
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(125.697, 108.711)
+rotation = 0.0161496
+shape = SubResource("CapsuleShape2D_hv1a0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

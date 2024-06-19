@@ -1832,7 +1832,14 @@ remote_path = NodePath("../../AnimatableBody2D")
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="MovingPlatformUp4"]
 position = Vector2(2882, 186)
 rotation = 1.56594
+<<<<<<< HEAD
 scale = Vector2(1, 1)
+=======
+<<<<<<< HEAD
+=======
+scale = Vector2(1, 1)
+>>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
+>>>>>>> origin/master
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatformUp4/AnimatableBody2D"]
 position = Vector2(-19.9998, -0.0703125)
