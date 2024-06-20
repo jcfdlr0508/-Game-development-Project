@@ -1,13 +1,14 @@
-[gd_scene load_steps=33 format=3 uid="uid://c74166mdt5ysk"]
+[gd_scene load_steps=34 format=3 uid="uid://c74166mdt5ysk"]
 
 [ext_resource type="Texture2D" uid="uid://wvt5cdgw4bi3" path="res://level-3 tileset/Dungeon Tile Set.png" id="1_uu4ia"]
-[ext_resource type="PackedScene" uid="uid://5k723g23snmi" path="res://scenes/Main_Character.tscn" id="2_5p8g2"]
+[ext_resource type="PackedScene" uid="uid://bd3h5yl70wvu8" path="res://scenes/Main_Character.tscn" id="2_5p8g2"]
 [ext_resource type="Script" path="res://scenes/moving_platform.gd" id="3_jy0io"]
 [ext_resource type="Texture2D" uid="uid://bptsc5bn2r48e" path="res://Tiles/platform_2.png" id="3_q770d"]
 [ext_resource type="PackedScene" uid="uid://6qnlbdrou3jl" path="res://scenes/FallDeath.tscn" id="5_sega7"]
 [ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="6_wffky"]
 [ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://scenes/enemy_knight.tscn" id="7_thxvp"]
 [ext_resource type="Texture2D" uid="uid://dhvgyrrntm86k" path="res://Castle.png" id="8_iiho6"]
+[ext_resource type="PackedScene" uid="uid://dd1ye0c08m382" path="res://scenes/checkpoint.tscn" id="9_4wj2v"]
 [ext_resource type="Script" path="res://scenes/Castle_Collision_lvl4.gd" id="9_a275b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bqvei"]
@@ -923,7 +924,7 @@ point_count = 2
 size = Vector2(158, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5vml"]
-size = Vector2(193, 25.5)
+size = Vector2(193, 14.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qado"]
 size = Vector2(96, 29)
@@ -1070,7 +1071,6 @@ remote_path = NodePath("../../AnimatableBody2D")
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="MovingPlatformSide"]
 position = Vector2(2731, 662)
 rotation = 0.00273223
-scale = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatformSide/AnimatableBody2D"]
 position = Vector2(-19.9999, -0.0691157)
@@ -1138,7 +1138,6 @@ remote_path = NodePath("../../AnimatableBody2D")
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="MovingPlatformSide3"]
 position = Vector2(2731, 662)
 rotation = 0.00273223
-scale = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatformSide3/AnimatableBody2D"]
 position = Vector2(-19.9999, -0.0691157)
@@ -1168,11 +1167,11 @@ position = Vector2(657, 608)
 shape = SubResource("RectangleShape2D_w7dd4")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="FallDeath"]
-position = Vector2(1232.5, 830.75)
+position = Vector2(1232.5, 834.25)
 shape = SubResource("RectangleShape2D_s5vml")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="FallDeath"]
-position = Vector2(1313, 1055)
+position = Vector2(1313, 1057.13)
 shape = SubResource("RectangleShape2D_s5vml")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="FallDeath"]
@@ -1223,6 +1222,12 @@ script = ExtResource("9_a275b")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Castle_Collision"]
 position = Vector2(5487.5, 841)
 shape = SubResource("RectangleShape2D_msvrv")
+
+[node name="Checkpoint" parent="." instance=ExtResource("9_4wj2v")]
+position = Vector2(1717, 444)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("9_4wj2v")]
+position = Vector2(2894, 476)
 
 [node name="Player" parent="." instance=ExtResource("2_5p8g2")]
 position = Vector2(-228, 365)

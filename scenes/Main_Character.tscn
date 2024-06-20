@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bd3h5yl70wvu8"]
+[gd_scene load_steps=46 format=3 uid="uid://bd3h5yl70wvu8"]
 
 [ext_resource type="Script" path="res://scenes/Main_Character.gd" id="1_nrovx"]
 [ext_resource type="Texture2D" uid="uid://ck8ghfjvrlxfk" path="res://Player/Idle/HeroKnight_Idle_0.png" id="2_dkk0h"]
@@ -196,6 +196,9 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w0okm"]
+load_path = "res://.godot/imported/score system ui.png-d551e632e12c3c763074b0729b68cf0c.ctex"
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_nrovx")
 
@@ -262,6 +265,60 @@ offset_top = 26.0
 offset_right = -289.0
 offset_bottom = 89.0
 theme_override_font_sizes/font_size = 45
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreBG" type="TextureRect" parent="UI"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -11.025
+anchor_top = 12.925
+anchor_right = -5.075
+anchor_bottom = 14.75
+offset_left = 3.05176e-05
+offset_right = 37.0
+offset_bottom = -6.10352e-05
+texture = SubResource("CompressedTexture2D_w0okm")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="UI/ScoreBG"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.013
+anchor_right = 0.954
+anchor_bottom = 1.0
+offset_left = -0.0940001
+offset_top = 5.0
+offset_right = -0.0520325
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score Text" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -15.0
+anchor_top = 8.0
+anchor_right = -15.0
+anchor_bottom = 8.0
+offset_left = 183.0
+offset_top = 171.0
+offset_right = 256.0
+offset_bottom = 206.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "Score:"
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]

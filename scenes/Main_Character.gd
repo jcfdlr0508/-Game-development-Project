@@ -5,6 +5,7 @@ class_name Player
 @onready var player_health_bar = $HealthBar
 @onready var pause_menu = $"Pause Menu"
 @onready var lives_score = $Control/Lives
+@onready var label = $UI/ScoreBG/Label
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -16,14 +17,15 @@ var isAttacking = false
 var isBlocking = false
 var hp = 100
 var paused = false
-var lives = 3
+var enemies_killed = 0
 var respawn_point = Vector2(-278, 285)
 
 func _ready():
 	GameManager.player = self
 	player_health_bar.max_value = 100
 	player_health_bar.value = hp
-	lives_score.text = "x" + str(lives)
+	lives_score.text = "x" + str(GameManager.lives)
+	label.text = str(GameManager.score)
 	# Connect checkpoint signal if not connected via editor
 	# $Checkpoint.connect("body_entered", self, "_on_checkpoint_body_entered")
 
@@ -42,19 +44,19 @@ func increase_health(amount):
 	player_health_bar.value = hp
 
 func increase_lives(amount):
-	lives += amount
-	lives_score.text = "x" + str(lives)  # Update the UI to reflect the new lives
+	GameManager.update_lives(amount)
+	lives_score.text = "x" + str(GameManager.lives)  # Update the UI to reflect the new lives
 
 func die():
-	lives -= 1
-	print("Died. Remaining lives:", lives)
-	lives_score.text = "x" + str(lives)
-	if lives >= 0:
+	GameManager.update_lives(-1)
+	print("Died. Remaining lives:", GameManager.lives)
+	lives_score.text = "x" + str(GameManager.lives)
+	if GameManager.lives >= 0:
 		GameManager.respawn_player()
 		respawn()
 	else:
 		print("Game Over")
-		get_tree().change_scene_to_file("res://gameover_screen.tscn")
+		get_tree().change_scene_to_file("res://gameover_sceen.tscn")
 		queue_free()
 
 func respawn():
@@ -149,9 +151,13 @@ func _on_attack_area_body_entered(body):
 	if body.get_name() == "Enemy-Knight":
 		if not isBlocking:
 			body.reduce_health(35)
+			enemies_killed += 1
+			add_points(10 * enemies_killed)  # Add points based on number of enemies killed
 	elif body.get_name() == "Enemy-Archer":
 		if not isBlocking:
 			body.reduce_health(50)
+			enemies_killed += 1
+			add_points(20 * enemies_killed)  # Add points based on number of enemies killed
 
 func _on_fall_death_body_entered(body):
 	if body.get_name() == "Player":
@@ -166,3 +172,11 @@ func _on_checkpoint_body_entered(body):
 func change_level(new_level_path):
 	GameManager.reset_checkpoint()
 	get_tree().change_scene_to_file(new_level_path)
+
+func add_points(points: int):
+	GameManager.update_score(points)
+	if label != null:
+		label.text = str(GameManager.score)
+		print("Score updated: ", GameManager.score)
+	else:
+		print("score_label is null")

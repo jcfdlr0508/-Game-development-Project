@@ -1,12 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://dwwe4c82jfrui"]
+[gd_scene load_steps=22 format=3 uid="uid://dwwe4c82jfrui"]
 
 [ext_resource type="Texture2D" uid="uid://wvt5cdgw4bi3" path="res://level-3 tileset/Dungeon Tile Set.png" id="1_priqr"]
-[ext_resource type="PackedScene" uid="uid://5k723g23snmi" path="res://scenes/Main_Character.tscn" id="2_qst4c"]
+[ext_resource type="Script" path="res://scenes/checkpoint.gd" id="1_tfc2l"]
+[ext_resource type="PackedScene" uid="uid://bd3h5yl70wvu8" path="res://scenes/Main_Character.tscn" id="2_qst4c"]
 [ext_resource type="PackedScene" uid="uid://6qnlbdrou3jl" path="res://scenes/FallDeath.tscn" id="3_ubde5"]
 [ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="4_idyhe"]
 [ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://scenes/enemy_knight.tscn" id="5_6d8el"]
 [ext_resource type="Texture2D" uid="uid://dhvgyrrntm86k" path="res://Castle.png" id="6_wm4al"]
 [ext_resource type="Script" path="res://scenes/CastleColision_lvl3.gd" id="7_qo13m"]
+[ext_resource type="PackedScene" uid="uid://dd1ye0c08m382" path="res://scenes/checkpoint.tscn" id="8_kjn2o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n5tjr"]
 texture = ExtResource("1_priqr")
@@ -866,6 +868,7 @@ size = Vector2(588, 506)
 
 [node name="Level3" type="Node2D"]
 position = Vector2(-1590, 138)
+script = ExtResource("1_tfc2l")
 
 [node name="BG" type="TileMap" parent="."]
 position = Vector2(-1038, -860)
@@ -933,12 +936,12 @@ shape = SubResource("RectangleShape2D_am8pm")
 
 [node name="Enemy-Archer" type="Node" parent="Enemy-Archers"]
 
-[node name="Enemy-Archer2" parent="Enemy-Archers/Enemy-Archer" instance=ExtResource("4_idyhe")]
+[node name="Enemy-Archer" parent="Enemy-Archers/Enemy-Archer" instance=ExtResource("4_idyhe")]
 position = Vector2(3117, -264)
 
 [node name="Enemy-Archer2" type="Node" parent="Enemy-Archers"]
 
-[node name="Enemy-Archer2" parent="Enemy-Archers/Enemy-Archer2" instance=ExtResource("4_idyhe")]
+[node name="Enemy-Archer" parent="Enemy-Archers/Enemy-Archer2" instance=ExtResource("4_idyhe")]
 position = Vector2(1460, 60)
 
 [node name="Enenmy-Knights" type="Node" parent="."]
@@ -946,7 +949,7 @@ position = Vector2(1460, 60)
 [node name="Enenmy-Knight" type="Node" parent="Enenmy-Knights"]
 
 [node name="Enemy-Knight" parent="Enenmy-Knights/Enenmy-Knight" instance=ExtResource("5_6d8el")]
-position = Vector2(3063, -184)
+position = Vector2(2711, 24)
 
 [node name="Castle" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -961,6 +964,9 @@ script = ExtResource("7_qo13m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CastleColision"]
 position = Vector2(6160, 69)
 shape = SubResource("RectangleShape2D_j8pfm")
+
+[node name="Checkpoint" parent="." instance=ExtResource("8_kjn2o")]
+position = Vector2(4218, -63)
 
 [node name="Player" parent="." instance=ExtResource("2_qst4c")]
 position = Vector2(-270, 419)

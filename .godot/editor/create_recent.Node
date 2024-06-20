@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 Label
 TextureRect
 Control
-=======
-<<<<<<< HEAD
-Control
-Label
-TextureRect
 PanelContainer
 Panel
 CanvasLayer
@@ -15,42 +9,3 @@ AnimatedSprite2D
 Area2D
 Node
 VBoxContainer
-MarginContainer
-Button
-Container
-MenuButton
-=======
-Node
-<<<<<<< HEAD
-Area2D
-CollisionShape2D
-AnimatedSprite2D
-=======
->>>>>>> faa9e41507105e16943be517f220dac6329ba2b8
-CollisionShape2D
-AnimatedSprite2D
-Area2D
-<<<<<<< HEAD
-Panel
-CanvasLayer
-Node2D
-Node
-=======
->>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
->>>>>>> faa9e41507105e16943be517f220dac6329ba2b8
-VBoxContainer
-MarginContainer
-Button
-Container
-<<<<<<< HEAD
-=======
-MenuButton
-NinePatchRect
-Timer
-RayCast2D
-<<<<<<< HEAD
-=======
-VisibleOnScreenEnabler2D
->>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
->>>>>>> origin/master
->>>>>>> faa9e41507105e16943be517f220dac6329ba2b8

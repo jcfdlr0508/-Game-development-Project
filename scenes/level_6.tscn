@@ -1,11 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://esibjb6ree2n"]
+[gd_scene load_steps=43 format=3 uid="uid://esibjb6ree2n"]
 
 [ext_resource type="Texture2D" uid="uid://big5w32f0t6io" path="res://level5-6/Tiles/Tileset Inside.png" id="1_lo0u8"]
 [ext_resource type="Texture2D" uid="uid://cc4671t7xv5mx" path="res://level5-6/Backgrounds/Sky.png" id="1_n6ud6"]
 [ext_resource type="Texture2D" uid="uid://csmjs4yw4icvr" path="res://level5-6/Backgrounds/Clouds.png" id="2_b5pj6"]
 [ext_resource type="Texture2D" uid="uid://her4hrvds7xr" path="res://level5-6/Tiles/Tileset Outside.png" id="2_sc5kf"]
 [ext_resource type="Script" path="res://scenes/CloudLayer.gd" id="2_t51mn"]
-[ext_resource type="PackedScene" uid="uid://5k723g23snmi" path="res://scenes/Main_Character.tscn" id="3_7f867"]
+[ext_resource type="PackedScene" uid="uid://bd3h5yl70wvu8" path="res://scenes/Main_Character.tscn" id="3_7f867"]
 [ext_resource type="Texture2D" uid="uid://d1ukixc4qhfh5" path="res://level5-6/Backgrounds/Rock Mountains.png" id="3_mt6o4"]
 [ext_resource type="Texture2D" uid="uid://hv4ci3pktpe3" path="res://level5-6/Backgrounds/Grass Mountains.png" id="4_2wjqf"]
 [ext_resource type="Texture2D" uid="uid://wvt5cdgw4bi3" path="res://level-3 tileset/Dungeon Tile Set.png" id="4_cd3vp"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scenes/FallDeath.gd" id="12_xduvy"]
 [ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="13_ah1rt"]
 [ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://scenes/enemy_knight.tscn" id="14_3wwx7"]
+[ext_resource type="PackedScene" uid="uid://dd1ye0c08m382" path="res://scenes/checkpoint.tscn" id="14_kdr36"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dclve"]
 texture = ExtResource("1_lo0u8")
@@ -1832,14 +1833,7 @@ remote_path = NodePath("../../AnimatableBody2D")
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="MovingPlatformUp4"]
 position = Vector2(2882, 186)
 rotation = 1.56594
-<<<<<<< HEAD
 scale = Vector2(1, 1)
-=======
-<<<<<<< HEAD
-=======
-scale = Vector2(1, 1)
->>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
->>>>>>> origin/master
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatformUp4/AnimatableBody2D"]
 position = Vector2(-19.9998, -0.0703125)
@@ -1930,6 +1924,12 @@ position = Vector2(1197, -308)
 
 [node name="Enemy-Knight" parent="Enemy-Knights/Enemy-Knight" instance=ExtResource("14_3wwx7")]
 position = Vector2(4931, -956)
+
+[node name="Checkpoint" parent="." instance=ExtResource("14_kdr36")]
+position = Vector2(5153, -538)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("14_kdr36")]
+position = Vector2(2912, 487)
 
 [node name="Player" parent="." instance=ExtResource("3_7f867")]
 position = Vector2(-260, 317)

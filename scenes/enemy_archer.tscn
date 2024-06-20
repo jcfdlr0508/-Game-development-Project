@@ -273,11 +273,7 @@ position = Vector2(214, 203)
 offset_left = 214.0
 offset_top = 263.0
 offset_right = 261.0
-<<<<<<< HEAD
-offset_bottom = 290.0
-=======
 offset_bottom = 276.0
->>>>>>> origin/master
 theme_override_styles/background = SubResource("StyleBoxFlat_i6gau")
 theme_override_styles/fill = SubResource("StyleBoxFlat_815p1")
 value = 50.0

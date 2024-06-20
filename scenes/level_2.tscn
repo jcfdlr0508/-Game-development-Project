@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cogcxbbvanfg6"]
 
 [ext_resource type="Texture2D" uid="uid://bhwxbdriwbq60" path="res://Tiles/dark_castle_tileset.png" id="1_u8nue"]
-[ext_resource type="PackedScene" uid="uid://5k723g23snmi" path="res://scenes/Main_Character.tscn" id="2_hmsr8"]
+[ext_resource type="PackedScene" uid="uid://bd3h5yl70wvu8" path="res://scenes/Main_Character.tscn" id="2_hmsr8"]
 [ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://scenes/enemy_knight.tscn" id="3_v2dsb"]
 [ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="4_s3l8y"]
 [ext_resource type="Texture2D" uid="uid://dhvgyrrntm86k" path="res://Castle.png" id="5_qt5ac"]
@@ -633,6 +633,12 @@ texture_filter = 1
 position = Vector2(9301, 2798)
 scale = Vector2(0.892474, 1.15081)
 texture = ExtResource("5_qt5ac")
+
+[node name="Checkpoint2" parent="." instance=ExtResource("6_ffthq")]
+position = Vector2(2058, 1366)
+
+[node name="Checkpoint3" parent="." instance=ExtResource("6_ffthq")]
+position = Vector2(4996, 3673)
 
 [node name="Castle Collision" type="Area2D" parent="."]
 position = Vector2(87, -413)

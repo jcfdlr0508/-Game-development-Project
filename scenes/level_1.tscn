@@ -1,16 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=95 format=3 uid="uid://cdrhr6qy5fpsk"]
-=======
-<<<<<<< HEAD
-[gd_scene load_steps=94 format=3 uid="uid://cdrhr6qy5fpsk"]
-=======
-<<<<<<< HEAD
-[gd_scene load_steps=96 format=3 uid="uid://cdrhr6qy5fpsk"]
-=======
-[gd_scene load_steps=94 format=3 uid="uid://cdrhr6qy5fpsk"]
->>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
->>>>>>> origin/master
->>>>>>> faa9e41507105e16943be517f220dac6329ba2b8
+[gd_scene load_steps=95 format=3 uid="uid://b8rwy0kocrp35"]
 
 [ext_resource type="Texture2D" uid="uid://dxniaa5ppsxnu" path="res://Tiles/brick_1.png" id="1_0u6jv"]
 [ext_resource type="Texture2D" uid="uid://2qhtwyymbx2j" path="res://Tiles/brick_10.png" id="2_dfdg3"]
@@ -59,23 +47,12 @@
 [ext_resource type="Texture2D" uid="uid://c17t41m6x3kne" path="res://Parallax/Parallax 3.png" id="45_fec2y"]
 [ext_resource type="Texture2D" uid="uid://bhq2yj11wmpv4" path="res://Decorations/barrel.png" id="46_78y5u"]
 [ext_resource type="Texture2D" uid="uid://b13t54t15v73t" path="res://Decorations/barrel_damaged.png" id="47_ao5no"]
-[ext_resource type="PackedScene" uid="uid://5k723g23snmi" path="res://scenes/Main_Character.tscn" id="48_ya5ta"]
+[ext_resource type="PackedScene" uid="uid://bd3h5yl70wvu8" path="res://scenes/Main_Character.tscn" id="48_ya5ta"]
 [ext_resource type="Script" path="res://scenes/Castle Collision.gd" id="49_rx4ae"]
 [ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="50_b23ar"]
 [ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://scenes/enemy_knight.tscn" id="51_lgn82"]
+[ext_resource type="PackedScene" uid="uid://dd1ye0c08m382" path="res://scenes/checkpoint.tscn" id="52_5nwyg"]
 [ext_resource type="PackedScene" uid="uid://6qnlbdrou3jl" path="res://scenes/FallDeath.tscn" id="52_gks8s"]
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://dd1ye0c08m382" path="res://scenes/checkpoint.tscn" id="53_guesx"]
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://dcyrt0qt6f8ps" path="res://scenes/collectable_drop.tscn" id="53_tiftn"]
-[ext_resource type="Script" path="res://scenes/game_manager.gd" id="54_ohp2e"]
-=======
->>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
->>>>>>> origin/master
->>>>>>> faa9e41507105e16943be517f220dac6329ba2b8
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7i0e8"]
 texture = ExtResource("1_0u6jv")
@@ -18398,34 +18375,18 @@ position = Vector2(10699, -197)
 [node name="Enemy-Archer" parent="Enemy-Archers/Enemy-Archer2" instance=ExtResource("50_b23ar")]
 position = Vector2(618, 173)
 
-[node name="Checkpoint" parent="." instance=ExtResource("53_guesx")]
-position = Vector2(12332, -28)
-spawn_point = Vector2(0, 0)
+[node name="Checkpoint" parent="." instance=ExtResource("52_5nwyg")]
+position = Vector2(5002, -458)
 
-[node name="Checkpoint2" parent="." instance=ExtResource("53_guesx")]
-position = Vector2(5061, -463)
-spawn_point = Vector2(0, 0)
+[node name="Checkpoint2" parent="." instance=ExtResource("52_5nwyg")]
+position = Vector2(12438, -28)
 
 [node name="Player" parent="." instance=ExtResource("48_ya5ta")]
-position = Vector2(-242, 282)
+position = Vector2(-278, 285)
+floor_stop_on_slope = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(136, 284)
 limit_top = -30000000
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-[node name="CollectableDrop" parent="." instance=ExtResource("53_tiftn")]
-position = Vector2(-131, 369)
-
-[node name="GameManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("54_ohp2e")
-
-=======
->>>>>>> a90c32b5efa215b0bd6c392a93c7fc4c8dc67d31
->>>>>>> origin/master
 [connection signal="body_entered" from="Castle Collision" to="Castle Collision" method="_on_body_entered"]
-[connection signal="body_entered" from="Checkpoint" to="Player" method="_on_checkpoint_body_entered"]
-[connection signal="body_entered" from="Checkpoint2" to="Player" method="_on_checkpoint_body_entered"]
