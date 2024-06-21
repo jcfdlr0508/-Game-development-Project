@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c4ys4r3gn8vfx"]
+[gd_scene load_steps=38 format=3 uid="uid://c4ys4r3gn8vfx"]
 
 [ext_resource type="Texture2D" uid="uid://her4hrvds7xr" path="res://level5-6/Tiles/Tileset Outside.png" id="1_ioenl"]
 [ext_resource type="Texture2D" uid="uid://cc4671t7xv5mx" path="res://level5-6/Backgrounds/Sky.png" id="1_nlm4q"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dhvgyrrntm86k" path="res://Castle.png" id="15_mlifs"]
 [ext_resource type="PackedScene" uid="uid://dd1ye0c08m382" path="res://scenes/checkpoint.tscn" id="16_1equg"]
 [ext_resource type="Script" path="res://scenes/Castle Collision_lvl5.gd" id="16_ovvux"]
+[ext_resource type="AudioStream" uid="uid://b1s642eof6rd2" path="res://stage 5 bg.wav" id="18_ojox5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7oc8"]
 size = Vector2(589, 511)
@@ -1914,5 +1915,9 @@ floor_stop_on_slope = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(136, 284)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_ojox5")
+autoplay = true
 
 [connection signal="body_entered" from="Castle Collision" to="Castle Collision" method="_on_body_entered"]

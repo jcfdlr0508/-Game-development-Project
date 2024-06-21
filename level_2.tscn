@@ -1,5 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc02evulxt6bq"]
+[gd_scene load_steps=3 format=3 uid="uid://dc02evulxt6bq"]
 
 [ext_resource type="PackedScene" uid="uid://cogcxbbvanfg6" path="res://scenes/level_2.tscn" id="1_i1lw5"]
+[ext_resource type="AudioStream" uid="uid://d4bix40xusne2" path="res://stage 2 bg.wav" id="2_y3l1m"]
 
 [node name="Level2" instance=ExtResource("1_i1lw5")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="10"]
+stream = ExtResource("2_y3l1m")
+autoplay = true

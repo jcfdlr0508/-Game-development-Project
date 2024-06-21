@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://b8rwy0kocrp35"]
+[gd_scene load_steps=96 format=3 uid="uid://b8rwy0kocrp35"]
 
 [ext_resource type="Texture2D" uid="uid://dxniaa5ppsxnu" path="res://Tiles/brick_1.png" id="1_0u6jv"]
 [ext_resource type="Texture2D" uid="uid://2qhtwyymbx2j" path="res://Tiles/brick_10.png" id="2_dfdg3"]
@@ -53,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://scenes/enemy_knight.tscn" id="51_lgn82"]
 [ext_resource type="PackedScene" uid="uid://dd1ye0c08m382" path="res://scenes/checkpoint.tscn" id="52_5nwyg"]
 [ext_resource type="PackedScene" uid="uid://6qnlbdrou3jl" path="res://scenes/FallDeath.tscn" id="52_gks8s"]
+[ext_resource type="AudioStream" uid="uid://y6lqtuw0dkol" path="res://stage 1 bg.wav" id="54_lrpl3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7i0e8"]
 texture = ExtResource("1_0u6jv")
@@ -18388,5 +18389,9 @@ floor_stop_on_slope = false
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(136, 284)
 limit_top = -30000000
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("54_lrpl3")
+autoplay = true
 
 [connection signal="body_entered" from="Castle Collision" to="Castle Collision" method="_on_body_entered"]

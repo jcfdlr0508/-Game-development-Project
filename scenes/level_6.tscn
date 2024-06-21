@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://esibjb6ree2n"]
+[gd_scene load_steps=44 format=3 uid="uid://esibjb6ree2n"]
 
 [ext_resource type="Texture2D" uid="uid://big5w32f0t6io" path="res://level5-6/Tiles/Tileset Inside.png" id="1_lo0u8"]
 [ext_resource type="Texture2D" uid="uid://cc4671t7xv5mx" path="res://level5-6/Backgrounds/Sky.png" id="1_n6ud6"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://behjde7totgkc" path="res://scenes/enemy_archer.tscn" id="13_ah1rt"]
 [ext_resource type="PackedScene" uid="uid://bg2btnpxnuw6u" path="res://scenes/enemy_knight.tscn" id="14_3wwx7"]
 [ext_resource type="PackedScene" uid="uid://dd1ye0c08m382" path="res://scenes/checkpoint.tscn" id="14_kdr36"]
+[ext_resource type="AudioStream" uid="uid://cm368jpd1bcgm" path="res://stage 6 bg.wav" id="16_n4oyn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dclve"]
 texture = ExtResource("1_lo0u8")
@@ -1833,7 +1834,6 @@ remote_path = NodePath("../../AnimatableBody2D")
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="MovingPlatformUp4"]
 position = Vector2(2882, 186)
 rotation = 1.56594
-scale = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatformUp4/AnimatableBody2D"]
 position = Vector2(-19.9998, -0.0703125)
@@ -1937,5 +1937,9 @@ floor_stop_on_slope = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(136, 284)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_n4oyn")
+autoplay = true
 
 [connection signal="body_entered" from="FallDeath" to="FallDeath" method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cogcxbbvanfg6"]
+[gd_scene load_steps=16 format=3 uid="uid://cogcxbbvanfg6"]
 
 [ext_resource type="Texture2D" uid="uid://bhwxbdriwbq60" path="res://Tiles/dark_castle_tileset.png" id="1_u8nue"]
 [ext_resource type="PackedScene" uid="uid://bd3h5yl70wvu8" path="res://scenes/Main_Character.tscn" id="2_hmsr8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dhvgyrrntm86k" path="res://Castle.png" id="5_qt5ac"]
 [ext_resource type="Script" path="res://scenes/Castle Collision_lvl2.gd" id="6_4y0dj"]
 [ext_resource type="PackedScene" uid="uid://dd1ye0c08m382" path="res://scenes/checkpoint.tscn" id="6_ffthq"]
+[ext_resource type="AudioStream" uid="uid://d4bix40xusne2" path="res://stage 2 bg.wav" id="8_614dr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6fwk"]
 texture = ExtResource("1_u8nue")
@@ -653,5 +654,9 @@ position = Vector2(-347, 304)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(136, 284)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_614dr")
+autoplay = true
 
 [connection signal="body_entered" from="Castle Collision" to="Castle Collision" method="_on_body_entered"]

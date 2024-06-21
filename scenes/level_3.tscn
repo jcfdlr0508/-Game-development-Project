@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dwwe4c82jfrui"]
+[gd_scene load_steps=23 format=3 uid="uid://dwwe4c82jfrui"]
 
 [ext_resource type="Texture2D" uid="uid://wvt5cdgw4bi3" path="res://level-3 tileset/Dungeon Tile Set.png" id="1_priqr"]
 [ext_resource type="Script" path="res://scenes/checkpoint.gd" id="1_tfc2l"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dhvgyrrntm86k" path="res://Castle.png" id="6_wm4al"]
 [ext_resource type="Script" path="res://scenes/CastleColision_lvl3.gd" id="7_qo13m"]
 [ext_resource type="PackedScene" uid="uid://dd1ye0c08m382" path="res://scenes/checkpoint.tscn" id="8_kjn2o"]
+[ext_resource type="AudioStream" uid="uid://cgtqs6ms4ujrc" path="res://stage 3 bg.wav" id="10_82cil"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n5tjr"]
 texture = ExtResource("1_priqr")
@@ -974,5 +975,9 @@ floor_stop_on_slope = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(124, 286)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_82cil")
+autoplay = true
 
 [connection signal="body_entered" from="CastleColision" to="CastleColision" method="_on_body_entered"]
