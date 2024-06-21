@@ -23,6 +23,10 @@ GameManager="*res://scenes/GameManager.gd"
 
 window/stretch/mode="viewport"
 
+[editor]
+
+run/main_run_args="--rendering-driver opengl3"
+
 [input]
 
 Left={

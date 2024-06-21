@@ -7,3 +7,10 @@ res://scenes/level_4.tscn
 res://scenes/level_2.tscn
 res://scenes/checkpoint.tscn
 res://scenes/level_6.tscn
+res://level_2.tscn
+res://scenes/level_5.tscn
+res://scenes/options.tscn
+res://scenes/menu.tscn
+res://scenes/title.tscn
+res://gameover_sceen.tscn
+res://pause_menu.tscn

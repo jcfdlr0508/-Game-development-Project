@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c74166mdt5ysk"]
+[gd_scene load_steps=35 format=3 uid="uid://c74166mdt5ysk"]
 
 [ext_resource type="Texture2D" uid="uid://wvt5cdgw4bi3" path="res://level-3 tileset/Dungeon Tile Set.png" id="1_uu4ia"]
 [ext_resource type="PackedScene" uid="uid://bd3h5yl70wvu8" path="res://scenes/Main_Character.tscn" id="2_5p8g2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dhvgyrrntm86k" path="res://Castle.png" id="8_iiho6"]
 [ext_resource type="PackedScene" uid="uid://dd1ye0c08m382" path="res://scenes/checkpoint.tscn" id="9_4wj2v"]
 [ext_resource type="Script" path="res://scenes/Castle_Collision_lvl4.gd" id="9_a275b"]
+[ext_resource type="AudioStream" uid="uid://bchgkbewxgwqg" path="res://stage 4 bg.wav" id="11_vjdto"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bqvei"]
 texture = ExtResource("1_uu4ia")
@@ -1071,6 +1072,7 @@ remote_path = NodePath("../../AnimatableBody2D")
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="MovingPlatformSide"]
 position = Vector2(2731, 662)
 rotation = 0.00273223
+scale = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatformSide/AnimatableBody2D"]
 position = Vector2(-19.9999, -0.0691157)
@@ -1138,6 +1140,7 @@ remote_path = NodePath("../../AnimatableBody2D")
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="MovingPlatformSide3"]
 position = Vector2(2731, 662)
 rotation = 0.00273223
+scale = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatformSide3/AnimatableBody2D"]
 position = Vector2(-19.9999, -0.0691157)
@@ -1235,5 +1238,9 @@ floor_stop_on_slope = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(136, 284)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_vjdto")
+autoplay = true
 
 [connection signal="body_entered" from="Castle_Collision" to="Castle_Collision" method="_on_body_entered"]
